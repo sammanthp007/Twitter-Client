@@ -10,12 +10,20 @@ import UIKit
 
 class TweetTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var thumbnailImageView: UIImageView!
     
     @IBOutlet weak var tweetText: UILabel!
     
+    
+    
     var tweet : TwitterTweet! {
         didSet {
+            print(tweet.text!)
+            print(String(describing: tweet.imageUrl))
             tweetText.text = tweet.text
+            thumbnailImageView.setImageWith(tweet.imageUrl as! URL)
+            print(tweet.name)
+            
         }
     }
     

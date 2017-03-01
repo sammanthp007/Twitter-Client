@@ -11,9 +11,12 @@ import UIKit
 class TweetTableViewCell: UITableViewCell {
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
-    
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var displayNameLabel: UILabel!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    
     
     var tweet : TwitterTweet! {
         didSet {
@@ -23,6 +26,11 @@ class TweetTableViewCell: UITableViewCell {
             thumbnailImageView.setImageWith(tweet.imageUrl as! URL)
             print(tweet.name)
             displayNameLabel.text = tweet.name
+            print(tweet.username)
+            usernameLabel.text = "@\(tweet.username)"
+            print(tweet.retweetCount)
+            print(tweet.favoritesCount)
+            
             
             
             

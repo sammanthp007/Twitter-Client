@@ -55,6 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: authorizedAccessToken, success: {
             (requestToken: BDBOAuth1Credential?) -> Void in
             print ("Got the request token")
+            
+            // make an api call to get who the curernt user is
+            twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: {(task, response) -> Void in
+                print("\(response)")
+            }, failure: {(task, error) -> Void in
+                print ("Error: \(error)")
+            })
         }, failure: {
             (Error) -> Void in
             print ("Error: \(Error)")

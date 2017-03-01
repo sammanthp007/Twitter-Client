@@ -13,8 +13,7 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     
     @IBOutlet weak var tweetText: UILabel!
-    
-    
+    @IBOutlet weak var displayNameLabel: UILabel!
     
     var tweet : TwitterTweet! {
         didSet {
@@ -23,6 +22,9 @@ class TweetTableViewCell: UITableViewCell {
             tweetText.text = tweet.text
             thumbnailImageView.setImageWith(tweet.imageUrl as! URL)
             print(tweet.name)
+            displayNameLabel.text = tweet.name
+            
+            
             
         }
     }

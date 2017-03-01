@@ -9,16 +9,24 @@
 import UIKit
 
 class tweetsViewController: UIViewController {
-
-    var tweets: [TwitterTweet]
+    
+    var tweets: [TwitterTweets]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
 
         // Do any additional setup after loading the view.
         // fetch tweets
+        let twitterClient = TwitterClient.sharedTwitterClient
+        
+        twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> Void in
+            print ("I have the tweets: \(allTweets)")
+            self.tweets = allTweets
+            
+        }, noSuccess: {(error: Error) -> Void in
+            print ("\(error)")
+        })
+
     }
 
     override func didReceiveMemoryWarning() {

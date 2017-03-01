@@ -45,13 +45,6 @@ class LoginViewController: UIViewController {
 //        })
 //        
 //        
-//        twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> () in
-//            for tweet in allTweets {
-//                print("Tweet content: \(tweet.text!)")
-//            }
-//        }, noSuccess: {(error: Error) -> () in
-//            print ("\(error)")
-//        })
     }
     /*
     // MARK: - Navigation

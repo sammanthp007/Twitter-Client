@@ -10,6 +10,15 @@ import UIKit
 
 class TweetTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var tweetText: UILabel!
+    
+    var tweet : TwitterTweet! {
+        didSet {
+            tweetText.text = tweet.text
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -43,44 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print(url.description)
-        
-        // to access the content in this session
-        // url.query is received as query when ever we are opened from another application using UIApplication.shared.open
-        let authorizedAccessToken = BDBOAuth1Credential(queryString: url.query)
-        
-        // Set the new session
-        let twitterClient = TwitterClient.sharedTwitterClient
-        
-        
-        // for using the apis
-        twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: authorizedAccessToken, success: {
-            (requestToken: BDBOAuth1Credential?) -> Void in
-            print ("Got the request token")
-            
-            twitterClient?.get_user(success: {(user_detail: TwitterUser) -> () in
-                print ("USERNAME \(user_detail.name!)")
-            }, noSuccess: {(error: Error) -> () in
-                print ("error: \(error)")
-            })
-            
-            
-            twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> () in
-                for tweet in allTweets {
-                    print("Tweet content: \(tweet.text!)")
-                }
-            }, noSuccess: {(error: Error) -> () in
-                print ("\(error)")
-            })
-            
-        }, failure: {
-            (Error) -> Void in
-            print ("Error: \(Error)")
-            
-        })
-        
-            
-        
+        // Set the new session and
+        // let TwitterClient handle the url
+        TwitterClient.sharedTwitterClient.handleOpenURL(url)
         
         return true
     }

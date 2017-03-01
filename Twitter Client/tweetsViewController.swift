@@ -32,7 +32,9 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let twitterClient = TwitterClient.sharedTwitterClient
         
         twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> Void in
-            print ("I have the tweets: \(allTweets)")
+            for tweet in allTweets {
+                print ("\(tweet)")
+            }
             self.tweets = allTweets
             
             // update table

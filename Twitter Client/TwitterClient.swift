@@ -121,5 +121,27 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    // make an api call to retweet tweets
+    func retweet(tweet: TwitterTweet, success: @escaping (TwitterTweet) -> (), failure: @escaping (Error) -> ()) {
+        post("1.1/statuses/retweet/" + tweet.idString! + ".json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+            let dictionary = response as? NSDictionary
+            let tweet = TwitterTweet(dictionary: dictionary!)
+            success(tweet)
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        })
+    }
+    
+    // make an api to favorite tweets
+    func favorite(tweet: TwitterTweet, success: @escaping (TwitterTweet) -> (), failure: @escaping (Error) -> ()) {
+        post("1.1/favorites/create.json", parameters: ["id": tweet.idString!], progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+            let dictionary = response as? NSDictionary
+            let tweet = TwitterTweet(dictionary: dictionary!)
+            success(tweet)
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+            
+        })
+    }
    
 }

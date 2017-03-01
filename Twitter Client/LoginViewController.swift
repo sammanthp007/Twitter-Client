@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
         // fetch request token using a generic OAUTH one process for twitter to verify that the actual api holder is making this call
         // the path to the request token can be found in app.twitter.com page
         // in even of a sucess, request for my request token
-        twitterClient?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: nil, scope: nil, success: {
+        twitterClient?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "sammanstwitter://oauth"), scope: nil, success: {
             (requestToken: BDBOAuth1Credential?) -> Void in
             print ("Received request token: \(requestToken?.token!)")
             

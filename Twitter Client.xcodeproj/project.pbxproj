@@ -147,7 +147,7 @@
 				TargetAttributes = {
 					5E91802C1E638C0B009B4267 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = K86KHC28SR;
+						DevelopmentTeam = CAD56Y7477;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -361,7 +361,7 @@
 			baseConfigurationReference = 23A16122E997FEEC3D21A79A /* Pods-Twitter Client.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = K86KHC28SR;
+				DEVELOPMENT_TEAM = CAD56Y7477;
 				INFOPLIST_FILE = "Twitter Client/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "sammanapps.com.Twitter-Client";
@@ -375,7 +375,7 @@
 			baseConfigurationReference = EBDC0FDE99B07E38EE9691B9 /* Pods-Twitter Client.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = K86KHC28SR;
+				DEVELOPMENT_TEAM = CAD56Y7477;
 				INFOPLIST_FILE = "Twitter Client/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "sammanapps.com.Twitter-Client";

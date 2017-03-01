@@ -20,7 +20,7 @@ class TwitterUser: NSObject {
         // deserialization: taking a dictionary of array of information and populating the needed information
         name = dict["name"] as? String
         screenname = dict["screenname"] as? String
-        profileURLString = dict["profile_image_url_https"] as? String
+        let profileURLString = dict["profile_image_url_https"] as? String
         if let profileURLString = profileURLString {
             profileURL = URL(string: profileURLString)
         }

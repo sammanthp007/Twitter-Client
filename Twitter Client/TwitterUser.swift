@@ -50,7 +50,7 @@ class TwitterUser: NSObject {
                     _currentUser = TwitterUser(dict: dictionary as! NSDictionary)
                 }
             }
-            return _currentUser!
+            return _currentUser
         }
         
         set (user) {

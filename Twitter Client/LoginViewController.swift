@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
         // in even of a sucess, request for my request token
         twitterClient?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "sammanstwitter://oauth"), scope: nil, success: {
             (requestToken: BDBOAuth1Credential?) -> Void in
-            print ("Received request token: \(requestToken?.token!)")
+            print ("Received request token in safari: \(requestToken!.token!)")
             
             // the url we want to take the users to in SAFARI
             let authorizeURL = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken!.token!)")

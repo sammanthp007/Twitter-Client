@@ -43,6 +43,15 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    // handles logout
+    func logOut(){
+        TwitterUser.currentUser = nil
+        deauthorize()
+        
+        // notify different classes and services that an event was triggered
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: TwitterUser.userLoggedOutNotification), object: nil)
+    }
+    
     // handling the return url from the oauth request for token; comes here after safari opens us again, being redirected from AppDelegate
     func handleOpenURL(url: URL) {
         // to access the content in this session

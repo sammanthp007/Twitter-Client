@@ -13,6 +13,12 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func logout(_ sender: Any) {
+        TwitterClient.sharedTwitterClient?.logOut()
+    }
+    
+    
+    
     var tweets: [TwitterTweet]!
     
     override func viewDidLoad() {

@@ -27,6 +27,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = vc
             
         }
+        
+        
+        // for logout
+        // the appdelegate is interested in getting notified about logging out, so
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: TwitterUser.userLoggedOutNotification), object: nil, queue: OperationQueue.main, using: { (NSNotification) in
+            let storyboard = UIStoryboard(name: "Main", bundle : nil)
+            
+            // initialViewController is the login one
+            let vc = storyboard.instantiateInitialViewController()
+            self.window?.rootViewController = vc
+        })
+        
         return true
     }
 

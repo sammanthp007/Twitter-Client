@@ -101,7 +101,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="So8-Iq-J78"/>
+                    <navigationItem key="navigationItem" id="So8-Iq-J78">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="D0D-1H-d6W">
+                            <connections>
+                                <action selector="logout:" destination="M6K-FS-iro" id="uga-ch-ZYU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Wzd-2W-luJ" id="vWa-93-A6e"/>
                     </connections>

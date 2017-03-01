@@ -68,4 +68,6 @@ class TwitterUser: NSObject {
             
         }
     }
+    
+    static let userLoggedOutNotification = "UserLoggedOut"
 }

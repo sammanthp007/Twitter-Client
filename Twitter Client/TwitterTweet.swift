@@ -20,8 +20,8 @@ class TwitterTweet: NSObject {
     var imageUrl: NSURL
     var favorite: Bool?
     var retweet: Bool?
-    var retweet_status: Tweet?
-    var currentUserRetweet: Tweet?
+    var retweet_status: TwitterTweet?
+    var currentUserRetweet: TwitterTweet?
     var idString: String?
     
     init(dictionary: NSDictionary) {
@@ -59,8 +59,8 @@ class TwitterTweet: NSObject {
         
     }
     
-    class func tweetsWithArray(dictionaries: [NSDictionary]) -> [Tweet] {
-        var tweets = [Tweet]()
+    class func tweetsWithArray(dictionaries: [NSDictionary]) -> [TwitterTweet] {
+        var tweets = [TwitterTweet]()
         for dictionary in dictionaries {
             let tweet = Tweet(dictionary: dictionary)
             tweets.append(tweet)

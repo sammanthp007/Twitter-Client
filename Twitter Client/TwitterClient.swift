@@ -55,8 +55,20 @@ class TwitterClient: BDBOAuth1SessionManager {
         // fetch the access token required for using the apis
         fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: authorizedAccessToken, success: {(requestToken: BDBOAuth1Credential?) -> Void in
             print ("Got the request token to use API:")
-            // OK, SO WE LOGIN HERE, UNDERSTOOD. But how do we get to loginViewController from here? how does loginSuccess work?
-            self.loginSuccess?()
+            
+            self.get_user(success: { (user) in
+                // call the setter and save the info about the current user
+                User.currentUser = user
+                
+                // OK, SO WE LOGIN HERE, UNDERSTOOD. But how do we get to loginViewController from here? how does loginSuccess work?
+                self.loginSuccess?()
+                
+            }, noSuccess: {(error: Error) in
+                self.loginFailure?((error)!)
+            })
+            // for setting current user
+            
+            
         }, failure: { (error: Error?) -> Void in
             print ("Error: \(error)")
             self.loginFailure?((error)!)

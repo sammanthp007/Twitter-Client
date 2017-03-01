@@ -31,6 +31,9 @@ class LoginViewController: UIViewController {
             // run this code when login happens successfully
             print ("I've logged in")
             
+            // perform segue to the list view of tweets
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            
         }, noSuccess: {(error: Error) -> Void in
             print ("error occured \(error)")
         })

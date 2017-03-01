@@ -39,7 +39,9 @@ class LoginViewController: UIViewController {
             
             // the url we want to take the users to in SAFARI
             let authorizeURL = URL(string: "https://api.twitter.com/oauth/authorize")
-
+            
+            // UIApplication.shared.open method is used to open other apps
+            UIApplication.shared.open(authorizeURL!, options: [:], completionHandler: nil)
             
             
             

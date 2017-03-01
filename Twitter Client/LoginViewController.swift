@@ -27,8 +27,27 @@ class LoginViewController: UIViewController {
         // session manager: for making Get or Post requests using sessions
         let twitterClient = TwitterClient.sharedTwitterClient
         
-        twitterClient?.login(success: <#T##() -> ()#>, noSuccess: {(error: Error)
+        twitterClient?.login(success: {() -> () in
+            // run this code when login happens successfully
+            print ("I've logged in")
             
+        }, noSuccess: {(error: Error) -> Void in
+            print ("error occured \(error)")
+        })
+        
+        twitterClient?.get_user(success: {(user_detail: TwitterUser) -> () in
+            print ("USERNAME \(user_detail.name!)")
+        }, noSuccess: {(error: Error) -> () in
+            print ("error: \(error)")
+        })
+        
+        
+        twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> () in
+            for tweet in allTweets {
+                print("Tweet content: \(tweet.text!)")
+            }
+        }, noSuccess: {(error: Error) -> () in
+            print ("\(error)")
         })
     }
     /*

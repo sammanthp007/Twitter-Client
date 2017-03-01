@@ -12,21 +12,21 @@ import BDBOAuth1Manager
 class TwitterClient: BDBOAuth1SessionManager {
     static let sharedTwitterClient = TwitterClient(baseURL: NSURL(string: "https://api.twitter.com") as URL!, consumerKey: "Egs4PG34sQWvqD2zCLMjrHdOI", consumerSecret: "90GSSJxs9j6NJzUXbWJ7rkhu7jVXCTHJKfVcosDYlPVZLEIT9i")
     
-    var loginSuccess:(() -> ())?
+    var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
     
     // handling login
-    func login(success: () -> (), noSuccess: (Error) -> ()) {
+    func login(success: @escaping () -> (), noSuccess: @escaping (Error) -> ()) {
         loginSuccess = success
         loginFailure = noSuccess
         
         // logout before loging in, this is a BDBO OAUTH 1  manager, logout first
-        twitterClient?.deauthorize()
+        deauthorize()
         
         // fetch request token using a generic OAUTH one process for twitter to verify that the actual api holder is making this call
         // the path to the request token can be found in app.twitter.com page
         // in even of a sucess, request for my request token
-        twitterClient?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "sammanstwitter://oauth"), scope: nil, success: {
+        fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "sammanstwitter://oauth"), scope: nil, success: {
             (requestToken: BDBOAuth1Credential?) -> Void in
             print ("Received request token in safari: \(requestToken!.token!)")
             
@@ -34,11 +34,11 @@ class TwitterClient: BDBOAuth1SessionManager {
             let authorizeURL = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken!.token!)")
             
             // UIApplication.shared.open method is used to open other apps
+            // opens safari for us in here
             UIApplication.shared.open(authorizeURL!, options: [:], completionHandler: nil)
-        }, failure: {
-            (error: Error) -> Void in
-            print ("Error \(Error?.localizedDescription)")
-            self.loginFailure(error)
+        }, failure: {(error: Error?) -> Void in
+            print ("Error \(error?.localizedDescription)")
+            self.loginFailure?((error)!)
         })
     }
     
@@ -48,32 +48,16 @@ class TwitterClient: BDBOAuth1SessionManager {
         // url.query is received as query when ever we are opened from another application using UIApplication.shared.open
         let authorizedAccessToken = BDBOAuth1Credential(queryString: url.query)
         
-        // for using the apis
-        twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: authorizedAccessToken, success: {
-            (requestToken: BDBOAuth1Credential?) -> Void in
+        // fetch the access token required for using the apis
+        fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: authorizedAccessToken,
+                         success: {(requestToken: BDBOAuth1Credential?) -> Void in
             print ("Got the request token")
-            
-            twitterClient?.get_user(success: {(user_detail: TwitterUser) -> () in
-                print ("USERNAME \(user_detail.name!)")
-            }, noSuccess: {(error: Error) -> () in
-                print ("error: \(error)")
-            })
-            
-            
-            twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> () in
-                for tweet in allTweets {
-                    print("Tweet content: \(tweet.text!)")
-                }
-            }, noSuccess: {(error: Error) -> () in
-                print ("\(error)")
-            })
-            
-        }, failure: {
-            (Error) -> Void in
-            print ("Error: \(Error)")
-            
-        })
-    }
+            self.loginSuccess?()
+        }, failure: { (error: Error?) -> Void in
+            print ("Error: \(error)")
+            self.loginFailure?((error)!)
+        }
+    )}
     
     
     // make an api call to get who the curernt user is

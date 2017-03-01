@@ -55,7 +55,7 @@
         <!--Tweets View Controller-->
         <scene sceneID="R3p-dQ-EXc">
             <objects>
-                <viewController id="M6K-FS-iro" customClass="TweetsViewController" customModule="Twitter_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M6K-FS-iro" customClass="tweetsViewController" customModule="Twitter_Client" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="raA-vo-Hwo"/>
                         <viewControllerLayoutGuide type="bottom" id="kzn-XV-xZj"/>
@@ -128,10 +128,10 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
-        <!--Tweets Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="p0l-Qb-SMY">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d4Q-hO-gAX" customClass="TweetsNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AllTweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="d4Q-hO-gAX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="or3-JO-BWz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

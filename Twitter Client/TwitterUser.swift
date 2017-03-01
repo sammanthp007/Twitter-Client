@@ -33,24 +33,24 @@ class TwitterUser: NSObject {
         
     }
     
-    static var _currentUser: User?
+    static var _currentUser: TwitterUser?
     
     // for persistant memory about the info of the user
-    class var currentUser: TwitterUser {
+    class var currentUser: TwitterUser? {
         get {
             if _currentUser == nil {
                 // retrive the persistant key value pair called UserDefaults
                 let defaults = UserDefaults.standard
                 
                 // get the currentUserData from the persistant memory (equivalent to cookie)
-                let userData = defaults.object(forKey: "currentUserData") as! NSData
+                let userData = defaults.object(forKey: "currentUserData") as? NSData
                 
                 if let userData = userData {
-                    let dictionary = try! JSONSerialization.jsonObject(with: userData, options: [])
+                    let dictionary = try! JSONSerialization.jsonObject(with: userData as Data, options: [])
                     _currentUser = TwitterUser(dict: dictionary as! NSDictionary)
                 }
             }
-            return _currentUser
+            return _currentUser!
         }
         
         set (user) {

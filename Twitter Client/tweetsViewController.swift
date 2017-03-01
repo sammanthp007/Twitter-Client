@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class tweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!

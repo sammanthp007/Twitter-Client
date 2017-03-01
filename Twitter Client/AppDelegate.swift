@@ -73,10 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 (task, response) -> Void in
                 let tweetDict = response as! [NSDictionary]
                 
-                let allTweets = TwitterTweet.tweetsWithArray(dictionaries: tweetDict)
+                let allTweets = TwitterTweet.getArrayOfTweets(dictionaries: tweetDict)
                 
                 for tweet in allTweets {
-                   print("Tweet content: \(tweet.text)")
+                   print("Tweet content: \(tweet.text!)")
                 }
                 
             }, failure: {(task, error) -> Void in

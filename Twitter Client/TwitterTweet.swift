@@ -59,7 +59,7 @@ class TwitterTweet: NSObject {
         
     }
     
-    class func tweetsWithArray(dictionaries: [NSDictionary]) -> [TwitterTweet] {
+    class func getArrayOfTweets(dictionaries: [NSDictionary]) -> [TwitterTweet] {
         var tweets = [TwitterTweet]()
         for dictionary in dictionaries {
             let tweet = TwitterTweet(dictionary: dictionary)

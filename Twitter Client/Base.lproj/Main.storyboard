@@ -160,6 +160,7 @@
                                             <outlet property="favCountLabel" destination="IDK-6y-aIL" id="9iB-2s-3iH"/>
                                             <outlet property="retweetCountLabel" destination="H6t-3l-JbZ" id="zSA-Ai-GVE"/>
                                             <outlet property="thumbnailImageView" destination="6tl-2K-rbK" id="k4c-Ox-ocv"/>
+                                            <outlet property="timeStampLabel" destination="gBQ-2I-mgz" id="YRL-kj-AEq"/>
                                             <outlet property="tweetText" destination="2Xi-il-KmT" id="eIT-ku-W88"/>
                                             <outlet property="usernameLabel" destination="cLQ-IT-mvN" id="1gD-rZ-HFV"/>
                                         </connections>

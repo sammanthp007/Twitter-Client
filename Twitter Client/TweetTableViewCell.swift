@@ -16,6 +16,7 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var retweetCountLabel: UILabel!
     @IBOutlet weak var favCountLabel: UILabel!
+    @IBOutlet weak var timeStampLabel: UILabel!
     
     var tweet : TwitterTweet! {
         didSet {
@@ -31,6 +32,11 @@ class TweetTableViewCell: UITableViewCell {
             print(tweet.favoritesCount)
             retweetCountLabel.text = String(tweet.retweetCount)
             favCountLabel.text = String(tweet.favoritesCount)
+            
+            // for time label
+            if let timeStamp = tweet.timeStamp {
+                timeStampLabel.text = TwitterClient.timeSince(timeStamp: timeStamp as Date)
+            }
             
         }
     }

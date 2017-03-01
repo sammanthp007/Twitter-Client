@@ -11,7 +11,7 @@ import UIKit
 class TwitterTweet: NSObject {
     
     var text: String?
-    var timestamp: NSDate?
+    var timeStamp: NSDate?
     var retweetCount: Int = 0
     var favoritesCount: Int = 0
     var userDictionary: NSDictionary
@@ -38,7 +38,7 @@ class TwitterTweet: NSObject {
         if let timestampString = timestampString {
             let formatter = DateFormatter()
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
-            timestamp = formatter.date(from: timestampString) as NSDate?
+            timeStamp = formatter.date(from: timestampString) as NSDate?
         }
         
         let currentUserRetweetDict = (dictionary["current_user_retweet"] as? NSDictionary)

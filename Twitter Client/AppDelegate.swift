@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         // Set the new session and
         // let TwitterClient handle the url
-        TwitterClient.sharedTwitterClient.handleOpenURL(url)
+        TwitterClient.sharedTwitterClient?.handleOpenURL(url: url)
         
         return true
     }

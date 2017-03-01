@@ -35,20 +35,20 @@ class LoginViewController: UIViewController {
             print ("error occured \(error)")
         })
         
-        twitterClient?.get_user(success: {(user_detail: TwitterUser) -> () in
-            print ("USERNAME \(user_detail.name!)")
-        }, noSuccess: {(error: Error) -> () in
-            print ("error: \(error)")
-        })
-        
-        
-        twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> () in
-            for tweet in allTweets {
-                print("Tweet content: \(tweet.text!)")
-            }
-        }, noSuccess: {(error: Error) -> () in
-            print ("\(error)")
-        })
+//        twitterClient?.get_user(success: {(user_detail: TwitterUser) -> () in
+//            print ("USERNAME \(user_detail.name!)")
+//        }, noSuccess: {(error: Error) -> () in
+//            print ("error: \(error)")
+//        })
+//        
+//        
+//        twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> () in
+//            for tweet in allTweets {
+//                print("Tweet content: \(tweet.text!)")
+//            }
+//        }, noSuccess: {(error: Error) -> () in
+//            print ("\(error)")
+//        })
     }
     /*
     // MARK: - Navigation

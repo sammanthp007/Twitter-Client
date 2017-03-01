@@ -28,7 +28,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         // in even of a sucess, request for my request token
         fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "sammanstwitter://oauth"), scope: nil, success: {
             (requestToken: BDBOAuth1Credential?) -> Void in
-            print ("Received request token in safari: \(requestToken!.token!)")
+            print ("Received request token to open login page authentically in safari: \(requestToken!.token!)")
             
             // the url we want to take the users to in SAFARI
             let authorizeURL = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken!.token!)")
@@ -36,22 +36,23 @@ class TwitterClient: BDBOAuth1SessionManager {
             // UIApplication.shared.open method is used to open other apps
             // opens safari for us in here
             UIApplication.shared.open(authorizeURL!, options: [:], completionHandler: nil)
+            
         }, failure: {(error: Error?) -> Void in
             print ("Error \(error?.localizedDescription)")
             self.loginFailure?((error)!)
         })
     }
     
-    // handling the return url from the oauth request for token
+    // handling the return url from the oauth request for token; comes here after safari opens us again, being redirected from AppDelegate
     func handleOpenURL(url: URL) {
         // to access the content in this session
         // url.query is received as query when ever we are opened from another application using UIApplication.shared.open
         let authorizedAccessToken = BDBOAuth1Credential(queryString: url.query)
         
         // fetch the access token required for using the apis
-        fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: authorizedAccessToken,
-                         success: {(requestToken: BDBOAuth1Credential?) -> Void in
+        fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: authorizedAccessToken, success: {(requestToken: BDBOAuth1Credential?) -> Void in
             print ("Got the request token")
+            // OK, SO WE LOGIN HERE, UNDERSTOOD.
             self.loginSuccess?()
         }, failure: { (error: Error?) -> Void in
             print ("Error: \(error)")
@@ -65,7 +66,6 @@ class TwitterClient: BDBOAuth1SessionManager {
         get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: {(task, response) -> Void in
         let userDict = response as! NSDictionary
         let user = TwitterUser(dict: userDict)
-        
         success(user)
         //print("\(response)")
         }, failure: {(task, error) -> Void in

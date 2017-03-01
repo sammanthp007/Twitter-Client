@@ -35,10 +35,10 @@ class LoginViewController: UIViewController {
         // in even of a sucess, request for my request token
         twitterClient?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: nil, scope: nil, success: {
             (requestToken: BDBOAuth1Credential?) -> Void in
-            print ("Received request token: \(requestToken?.token)")
+            print ("Received request token: \(requestToken?.token!)")
             
             // the url we want to take the users to in SAFARI
-            let authorizeURL = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken?.token)")
+            let authorizeURL = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken!.token!)")
             
             // UIApplication.shared.open method is used to open other apps
             UIApplication.shared.open(authorizeURL!, options: [:], completionHandler: nil)

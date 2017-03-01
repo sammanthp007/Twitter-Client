@@ -123,7 +123,9 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     // make an api call to retweet tweets
     func retweet(tweet: TwitterTweet, success: @escaping (TwitterTweet) -> (), failure: @escaping (Error) -> ()) {
+        print (">>>>>>>>>inside retweed: 1.1/statuses/retweet/\(tweet.idString!).json")
         post("1.1/statuses/retweet/" + tweet.idString! + ".json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+            print ("SFSDFSDFSDFSD came in here")
             let dictionary = response as? NSDictionary
             let tweet = TwitterTweet(dictionary: dictionary!)
             success(tweet)

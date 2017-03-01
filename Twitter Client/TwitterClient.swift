@@ -49,10 +49,13 @@ class TwitterClient: BDBOAuth1SessionManager {
         // url.query is received as query when ever we are opened from another application using UIApplication.shared.open
         let authorizedAccessToken = BDBOAuth1Credential(queryString: url.query)
         
+        // DEBUGGING
+        print ("Received the token from logging in by users: \(authorizedAccessToken)")
+        
         // fetch the access token required for using the apis
         fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: authorizedAccessToken, success: {(requestToken: BDBOAuth1Credential?) -> Void in
-            print ("Got the request token")
-            // OK, SO WE LOGIN HERE, UNDERSTOOD.
+            print ("Got the request token to use API:")
+            // OK, SO WE LOGIN HERE, UNDERSTOOD. But how do we get to loginViewController from here? how does loginSuccess work?
             self.loginSuccess?()
         }, failure: { (error: Error?) -> Void in
             print ("Error: \(error)")

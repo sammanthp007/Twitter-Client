@@ -57,8 +57,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print ("Got the request token")
             
             // make an api call to get who the curernt user is
-            twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: {(task, response) -> Void in
-                print("\(response)")
+//            twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: {(task, response) -> Void in
+//                print("\(response)")
+//            }, failure: {(task, error) -> Void in
+//                print ("Error: \(error)")
+//            })
+            
+            // make an api call to get all mentions of me
+            twitterClient?.get("1.1/statuses/mentions_timeline.json", parameters: nil, progress: nil, success: {(task, response) -> Void in
+                let mentions = response as! NSDictionary
+                
+                print ("\(mentions)")
             }, failure: {(task, error) -> Void in
                 print ("Error: \(error)")
             })

@@ -57,41 +57,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             (requestToken: BDBOAuth1Credential?) -> Void in
             print ("Got the request token")
             
-            // make an api call to get who the curernt user is
-            twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: {(task, response) -> Void in
-                let userDict = response as! NSDictionary
-                let user = TwitterUser(dict: userDict)
-                
-                print ("name: \(user.name!)")
-                //print("\(response)")
-            }, failure: {(task, error) -> Void in
-                print ("Error: \(error)")
-            })
             
-            
-            // make a get request to get tweets
-            twitterClient?.get("1.1/statuses/home_timeline.json", parameters: ["count": 20], progress: nil, success: {
-                (task, response) -> Void in
-                let tweetDict = response as! [NSDictionary]
-                
-                let allTweets = TwitterTweet.getArrayOfTweets(dictionaries: tweetDict)
-                
+            twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> () in
                 for tweet in allTweets {
-                   print("Tweet content: \(tweet.text!)")
+                    print("Tweet content: \(tweet.text!)")
                 }
-                
-            }, failure: {(task, error) -> Void in
-                print ("Error: \(error)")
+            }, noSuccess: {(error: Error) -> () in
+                print ("\(error)")
             })
-            
-            // make an api call to get all mentions of me
-//            twitterClient?.get("1.1/statuses/mentions_timeline.json", parameters: nil, progress: nil, success: {(task, response) -> Void in
-//                let mentions = response as! [NSDictionary]
-//                
-//                print ("\(mentions)")
-//            }, failure: {(task, error) -> Void in
-//                print ("Error: \(error)")
-//            })
         }, failure: {
             (Error) -> Void in
             print ("Error: \(Error)")

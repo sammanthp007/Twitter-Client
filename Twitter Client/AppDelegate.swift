@@ -57,6 +57,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             (requestToken: BDBOAuth1Credential?) -> Void in
             print ("Got the request token")
             
+            twitterClient?.get_user(success: {(user_detail: TwitterUser) -> () in
+                print ("USERNAME \(user_detail.name)")
+            }, noSuccess: {(error: Error) -> () in
+                print ("error: \(error)")
+            })
+            
             
             twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> () in
                 for tweet in allTweets {
@@ -65,6 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }, noSuccess: {(error: Error) -> () in
                 print ("\(error)")
             })
+            
         }, failure: {
             (Error) -> Void in
             print ("Error: \(Error)")

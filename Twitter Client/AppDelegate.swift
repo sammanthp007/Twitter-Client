@@ -51,14 +51,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set the new session
         let twitterClient = TwitterClient.sharedTwitterClient
-            
+        
+        
         // for using the apis
         twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: authorizedAccessToken, success: {
             (requestToken: BDBOAuth1Credential?) -> Void in
             print ("Got the request token")
             
             twitterClient?.get_user(success: {(user_detail: TwitterUser) -> () in
-                print ("USERNAME \(user_detail.name)")
+                print ("USERNAME \(user_detail.name!)")
             }, noSuccess: {(error: Error) -> () in
                 print ("error: \(error)")
             })

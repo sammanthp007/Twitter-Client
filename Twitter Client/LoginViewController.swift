@@ -27,30 +27,9 @@ class LoginViewController: UIViewController {
         // session manager: for making Get or Post requests using sessions
         let twitterClient = TwitterClient.sharedTwitterClient
         
-        // logout before loging in, this is a BDBO OAUTH 1  manager, logout first
-        twitterClient?.deauthorize()
-        
-        // fetch request token using a generic OAUTH one process for twitter to verify that the actual api holder is making this call
-        // the path to the request token can be found in app.twitter.com page
-        // in even of a sucess, request for my request token
-        twitterClient?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "sammanstwitter://oauth"), scope: nil, success: {
-            (requestToken: BDBOAuth1Credential?) -> Void in
-            print ("Received request token in safari: \(requestToken!.token!)")
+        twitterClient?.login(success: <#T##() -> ()#>, noSuccess: {(error: Error)
             
-            // the url we want to take the users to in SAFARI
-            let authorizeURL = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken!.token!)")
-            
-            // UIApplication.shared.open method is used to open other apps
-            UIApplication.shared.open(authorizeURL!, options: [:], completionHandler: nil)
-            
-            
-            
-            
-        }, failure: {
-            (Error) in
-            print ("Error \(Error?.localizedDescription)")
         })
-        
     }
     /*
     // MARK: - Navigation

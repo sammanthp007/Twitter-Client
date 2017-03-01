@@ -67,6 +67,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print ("Error: \(error)")
             })
             
+            
+            // make a get request to get tweets
+            twitterClient?.get("1.1/statuses/home_timeline.json", parameters: ["count": 20], progress: nil, success: {
+                (task, response) -> Void in
+                let tweetDict = response as! [NSDictionary]
+                
+                let allTweets = TwitterTweet.tweetsWithArray(dictionaries: tweetDict)
+                
+                for tweet in allTweets {
+                   print("Tweet content: \(tweet.text)")
+                }
+                
+            }, failure: {(task, error) -> Void in
+                print ("Error: \(error)")
+            })
+            
             // make an api call to get all mentions of me
 //            twitterClient?.get("1.1/statuses/mentions_timeline.json", parameters: nil, progress: nil, success: {(task, response) -> Void in
 //                let mentions = response as! [NSDictionary]

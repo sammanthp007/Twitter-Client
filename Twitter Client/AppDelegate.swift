@@ -46,11 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(url.description)
         
         // to access the content in this session
+        // url.query is received as query when ever we are opened from another application using UIApplication.shared.open
         let authorizedAccessToken = BDBOAuth1Credential(queryString: url.query)
         
         // Set the new session
-        let twitterClient = BDBOAuth1SessionManager(baseURL: URL(string: "https://api.twitter.com"), consumerKey: "Egs4PG34sQWvqD2zCLMjrHdOI", consumerSecret: "90GSSJxs9j6NJzUXbWJ7rkhu7jVXCTHJKfVcosDYlPVZLEIT9i")
-        
+        let twitterClient = TwitterClient.sharedTwitterClient
+            
         // for using the apis
         twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: authorizedAccessToken, success: {
             (requestToken: BDBOAuth1Credential?) -> Void in

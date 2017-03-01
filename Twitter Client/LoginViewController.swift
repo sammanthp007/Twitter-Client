@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func twitterLoginButton(_ sender: Any) {
         // session manager: for making Get or Post requests using sessions
-        let twitterClient = BDBOAuth1SessionManager(baseURL: NSURL(string: "https://api.twitter.com") as URL!, consumerKey: "Egs4PG34sQWvqD2zCLMjrHdOI", consumerSecret: "90GSSJxs9j6NJzUXbWJ7rkhu7jVXCTHJKfVcosDYlPVZLEIT9i")
+        let twitterClient = TwitterClient.sharedTwitterClient
         
         // logout before loging in, this is a BDBO OAUTH 1  manager, logout first
         twitterClient?.deauthorize()

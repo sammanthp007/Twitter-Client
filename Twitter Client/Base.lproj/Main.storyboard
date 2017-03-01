@@ -65,9 +65,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="197" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wzd-2W-luJ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="197" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wzd-2W-luJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="197" id="Y9r-5U-760" customClass="TweetTableViewCell" customModule="Twitter_Client" customModuleProvider="target">
@@ -158,6 +157,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="displayNameLabel" destination="Sas-Mp-CRr" id="ktM-ch-qfg"/>
+                                            <outlet property="favCountLabel" destination="IDK-6y-aIL" id="9iB-2s-3iH"/>
+                                            <outlet property="retweetCountLabel" destination="H6t-3l-JbZ" id="zSA-Ai-GVE"/>
                                             <outlet property="thumbnailImageView" destination="6tl-2K-rbK" id="k4c-Ox-ocv"/>
                                             <outlet property="tweetText" destination="2Xi-il-KmT" id="eIT-ku-W88"/>
                                             <outlet property="usernameLabel" destination="cLQ-IT-mvN" id="1gD-rZ-HFV"/>
@@ -167,6 +168,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Wzd-2W-luJ" secondAttribute="trailing" id="R27-Te-IPS"/>
+                            <constraint firstItem="Wzd-2W-luJ" firstAttribute="leading" secondItem="kwF-Kq-PIO" secondAttribute="leading" id="Zx3-Ai-LBG"/>
+                            <constraint firstItem="kzn-XV-xZj" firstAttribute="top" secondItem="Wzd-2W-luJ" secondAttribute="bottom" id="bsB-wG-gRO"/>
+                            <constraint firstItem="Wzd-2W-luJ" firstAttribute="top" secondItem="kwF-Kq-PIO" secondAttribute="top" id="mml-LS-Nmi"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="So8-Iq-J78">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="D0D-1H-d6W">

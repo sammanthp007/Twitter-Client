@@ -13,10 +13,9 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var displayNameLabel: UILabel!
-    
     @IBOutlet weak var usernameLabel: UILabel!
-    
-    
+    @IBOutlet weak var retweetCountLabel: UILabel!
+    @IBOutlet weak var favCountLabel: UILabel!
     
     var tweet : TwitterTweet! {
         didSet {
@@ -30,9 +29,8 @@ class TweetTableViewCell: UITableViewCell {
             usernameLabel.text = "@\(tweet.username)"
             print(tweet.retweetCount)
             print(tweet.favoritesCount)
-            
-            
-            
+            retweetCountLabel.text = String(tweet.retweetCount)
+            favCountLabel.text = String(tweet.favoritesCount)
             
         }
     }
@@ -40,6 +38,8 @@ class TweetTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        thumbnailImageView.layer.cornerRadius = 3
+        thumbnailImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -76,8 +76,10 @@ class TweetDetailViewController: UIViewController {
                 self.tweet = ret_tweet
                 
                 self.retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon"), for: .normal)
+                self.retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon"), for: .selected)
+
                 self.countRetweetLabel.text = String(self.tweet.retweetCount)
-                print(self.tweet.retweet)
+                self.tweet.retweet = false
             }, failure: {(error: Error) in
                 print (error.localizedDescription)
             })
@@ -87,8 +89,8 @@ class TweetDetailViewController: UIViewController {
                 self.tweet = ret_tweet
                 self.retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon-green"), for: .normal)
                 self.countRetweetLabel.text = String(self.tweet.retweetCount)
-                self.tweet.retweet = false
-                print(self.tweet.retweet)
+                self.tweet.retweet = true
+
             }, failure: {(error: Error) in
                 print (error.localizedDescription)
             })
@@ -97,7 +99,23 @@ class TweetDetailViewController: UIViewController {
 
     @IBAction func onFavorite(_ sender: Any) {
         if (tweet.favorite == true) {
-            print("favorite")
+            print("favorited")
+            TwitterClient.sharedTwitterClient?.unfavorite(tweet: self.tweet, success: {(ret_tweet) in
+                self.tweet = ret_tweet
+                self.favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon"), for: .normal)
+                self.countFavoritesLabel.text = String(ret_tweet.favoritesCount)
+            }, failure: {(error: Error) in
+                print("Error: \(error)")
+            })
+        }
+        else {
+            TwitterClient.sharedTwitterClient?.favorite(tweet: self.tweet, success: {(ret_tweet) in
+                self.tweet = ret_tweet
+                self.favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .normal)
+                self.countFavoritesLabel.text = String(ret_tweet.favoritesCount)
+            }, failure: {(error) in
+                print("Error: \(error)")
+            })
         }
     }
     /*

@@ -167,7 +167,6 @@ class TwitterClient: BDBOAuth1SessionManager {
                 } else {
                     original_tweet = TwitterTweet.init(dictionary: dicti!)
                 }
-                print (">>>>>>>>>>>>>>\(dicti)")
                 let retweet_id = original_tweet.currentUserRetweet
                 
                 // unretweet
@@ -175,6 +174,7 @@ class TwitterClient: BDBOAuth1SessionManager {
                     let dictionary = response as? NSDictionary
                     let tweet = TwitterTweet(dictionary: dictionary!)
                     success(tweet)
+                    
                 }, failure: { (task: URLSessionDataTask?, error: Error) in
                     failure(error)
                 })
@@ -186,6 +186,16 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
+    // for unfavoriting
+    func unfavorite(tweet: TwitterTweet, success: @escaping (TwitterTweet) -> (), failure: @escaping (Error) -> ()) {
+        post("1.1/favorites/destroy.json", parameters: ["id": tweet.idString!], progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+            let dictionary = response as? NSDictionary
+            let tweet = TwitterTweet(dictionary: dictionary!)
+            success(tweet)
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        })
+    }
     
     
     

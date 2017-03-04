@@ -74,6 +74,7 @@ class TweetDetailViewController: UIViewController {
             TwitterClient.sharedTwitterClient?.unretweet(tweet: self.tweet, success: {(ret_tweet: TwitterTweet) in
                 print ("untweeted")
                 self.tweet = ret_tweet
+                
                 self.retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon"), for: .normal)
                 self.countRetweetLabel.text = String(self.tweet.retweetCount)
             }, failure: {(error: Error) in
@@ -85,6 +86,7 @@ class TweetDetailViewController: UIViewController {
                 self.tweet = ret_tweet
                 self.retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon-green"), for: .normal)
                 self.countRetweetLabel.text = String(self.tweet.retweetCount)
+                print(self.tweet.retweet)
             }, failure: {(error: Error) in
                 print (error.localizedDescription)
             })

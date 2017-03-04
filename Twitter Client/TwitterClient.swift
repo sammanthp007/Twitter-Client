@@ -160,15 +160,15 @@ class TwitterClient: BDBOAuth1SessionManager {
             get("1.1/statuses/show.json", parameters: ["id": original_tweet_id!, "include_my_retweet": true], progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 let dicti = response as? NSDictionary
 
-                // get the tweet and upload it as our model
-                let full_tweet: TwitterTweet
+                // get the tweet and get the id of the retweet
+                let original_tweet: TwitterTweet
                 if (dicti != nil) {
-                    full_tweet = TwitterTweet.init(dictionary: dicti!)
+                    original_tweet = TwitterTweet.init(dictionary: dicti!)
                 } else {
-                    full_tweet = TwitterTweet(dictionary: dicti!)
+                    original_tweet = TwitterTweet.init(dictionary: dicti!)
                 }
-                print (">>>>>>>>>>>>>>")
-                let retweet_id = full_tweet.currentUserRetweet
+                print (">>>>>>>>>>>>>>\(dicti)")
+                let retweet_id = original_tweet.currentUserRetweet
                 
                 // unretweet
                 self.post("1.1/statuses/unretweet/" + retweet_id! + ".json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in

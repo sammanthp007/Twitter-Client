@@ -30,8 +30,7 @@ class TwitterTweet: NSObject {
         favoritesCount  = (dictionary["favorite_count"] as? Int) ?? 0
         idString = dictionary["id_str"] as? String
         let ss = dictionary["user"]
-        print (">>>>>>this is ss>>>>>>>>>\(ss) but dictionary is still \(dictionary)")
-        print ("TTTTTTTTTTTTTTTTTTTTT")
+        //print (">>>>>>this is ss>>>>>>>>>\(ss) but dictionary is still \(dictionary)")
         userDictionary = ss as! NSDictionary
         name = userDictionary["name"] as! String
         username = (userDictionary["screen_name"] as? String)!
@@ -61,7 +60,6 @@ class TwitterTweet: NSObject {
         }
         favorite = dictionary["favorited"] as? Bool
         
-        print ("CCCCCCCCCCCCCCCCCCC")
     }
     
     class func getArrayOfTweets(dictionaries: [NSDictionary]) -> [TwitterTweet] {

@@ -14,8 +14,6 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var retweetCountLabel: UILabel!
-    @IBOutlet weak var favCountLabel: UILabel!
     @IBOutlet weak var timeStampLabel: UILabel!
     
     var tweet : TwitterTweet! {
@@ -30,8 +28,8 @@ class TweetTableViewCell: UITableViewCell {
             usernameLabel.text = "@\(tweet.username)"
             print(tweet.retweetCount)
             print(tweet.favoritesCount)
-            retweetCountLabel.text = String(tweet.retweetCount)
-            favCountLabel.text = String(tweet.favoritesCount)
+            // retweetCountLabel.text = String(tweet.retweetCount)
+            // favCountLabel.text = String(tweet.favoritesCount)
             
             // for time label
             if let timeStamp = tweet.timeStamp {

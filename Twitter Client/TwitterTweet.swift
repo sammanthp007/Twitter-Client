@@ -21,7 +21,7 @@ class TwitterTweet: NSObject {
     var favorite: Bool?
     var retweet: Bool?
     var retweet_status: TwitterTweet?
-    var currentUserRetweet: TwitterTweet?
+    var currentUserRetweet: String?
     var idString: String?
     
     init(dictionary: NSDictionary) {
@@ -29,7 +29,10 @@ class TwitterTweet: NSObject {
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favoritesCount  = (dictionary["favorite_count"] as? Int) ?? 0
         idString = dictionary["id_str"] as? String
-        userDictionary = dictionary["user"] as! NSDictionary
+        let ss = dictionary["user"]
+        print (">>>>>>this is ss>>>>>>>>>\(ss) but dictionary is still \(dictionary)")
+        print ("TTTTTTTTTTTTTTTTTTTTT")
+        userDictionary = ss as! NSDictionary
         name = userDictionary["name"] as! String
         username = (userDictionary["screen_name"] as? String)!
         imageUrl = NSURL(string: userDictionary["profile_image_url_https"] as! String)!
@@ -41,14 +44,15 @@ class TwitterTweet: NSObject {
             timeStamp = formatter.date(from: timestampString) as NSDate?
         }
         
-        let currentUserRetweetDict = (dictionary["current_user_retweet"] as? NSDictionary)
+        let currentUserRetweetDict = dictionary["current_user_retweet"] as? NSDictionary
         if currentUserRetweetDict != nil {
-            currentUserRetweet = TwitterTweet(dictionary: currentUserRetweetDict!)
+            currentUserRetweet = (currentUserRetweetDict?["id_str"] as AnyObject) as? String
         } else {
             currentUserRetweet = nil
         }
         
         retweet = dictionary["retweeted"] as? Bool
+        
         let retweet_status_dict = (dictionary["retweeted_status"] as? NSDictionary) ?? nil
         if retweet_status_dict != nil {
             retweet_status = TwitterTweet(dictionary: retweet_status_dict!)
@@ -57,6 +61,7 @@ class TwitterTweet: NSObject {
         }
         favorite = dictionary["favorited"] as? Bool
         
+        print ("CCCCCCCCCCCCCCCCCCC")
     }
     
     class func getArrayOfTweets(dictionaries: [NSDictionary]) -> [TwitterTweet] {

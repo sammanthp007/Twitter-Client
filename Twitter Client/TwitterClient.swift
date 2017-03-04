@@ -123,9 +123,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     // make an api call to retweet tweets
     func retweet(tweet: TwitterTweet, success: @escaping (TwitterTweet) -> (), failure: @escaping (Error) -> ()) {
-        print (">>>>>>>>>inside retweed: 1.1/statuses/retweet/\(tweet.idString!).json")
         post("1.1/statuses/retweet/" + tweet.idString! + ".json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
-            print ("SFSDFSDFSDFSD came in here")
             let dictionary = response as? NSDictionary
             let tweet = TwitterTweet(dictionary: dictionary!)
             success(tweet)
@@ -145,6 +143,51 @@ class TwitterClient: BDBOAuth1SessionManager {
             
         })
     }
+    
+    
+    // unretweeting api
+    func unretweet(tweet: TwitterTweet, success: @escaping (TwitterTweet) -> (), failure: @escaping (Error) -> ()) {
+        if tweet.retweet == true {
+            var original_tweet_id: String?
+            
+            // check if it is a retweet itself form another tweet
+            if tweet.retweet_status == nil {
+                original_tweet_id = tweet.idString
+            } else {
+                original_tweet_id = tweet.retweet_status?.idString
+            }
+            
+            get("1.1/statuses/show.json", parameters: ["id": original_tweet_id!, "include_my_retweet": true], progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+                let dicti = response as? NSDictionary
+
+                // get the tweet and upload it as our model
+                let full_tweet: TwitterTweet
+                if (dicti != nil) {
+                    full_tweet = TwitterTweet.init(dictionary: dicti!)
+                } else {
+                    full_tweet = TwitterTweet(dictionary: dicti!)
+                }
+                print (">>>>>>>>>>>>>>")
+                let retweet_id = full_tweet.currentUserRetweet
+                
+                // unretweet
+                self.post("1.1/statuses/unretweet/" + retweet_id! + ".json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+                    let dictionary = response as? NSDictionary
+                    let tweet = TwitterTweet(dictionary: dictionary!)
+                    success(tweet)
+                }, failure: { (task: URLSessionDataTask?, error: Error) in
+                    failure(error)
+                })
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                print(error.localizedDescription)
+            })
+        } else {
+            success(tweet)
+        }
+    }
+    
+    
+    
     
     // for figuring when the tweet was made portion
     static func timeSince(timeStamp: Date) -> String {

@@ -71,6 +71,14 @@ class TweetDetailViewController: UIViewController {
     @IBAction func onRetweet(_ sender: Any) {
         if (tweet.retweet == true) {
             // unretweet
+            TwitterClient.sharedTwitterClient?.unretweet(tweet: self.tweet, success: {(ret_tweet: TwitterTweet) in
+                print ("untweeted")
+                self.tweet = ret_tweet
+                self.retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon"), for: .normal)
+                self.countRetweetLabel.text = String(self.tweet.retweetCount)
+            }, failure: {(error: Error) in
+                print (error.localizedDescription)
+            })
         } else {
             // retweet
             TwitterClient.sharedTwitterClient?.retweet(tweet: self.tweet, success: {(ret_tweet) -> () in
@@ -84,6 +92,9 @@ class TweetDetailViewController: UIViewController {
     }
 
     @IBAction func onFavorite(_ sender: Any) {
+        if (tweet.favorite == true) {
+            print("favorite")
+        }
     }
     /*
     // MARK: - Navigation

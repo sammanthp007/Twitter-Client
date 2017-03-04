@@ -14,6 +14,8 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var timeStampLabel: UILabel!
     
     var tweet : TwitterTweet! {
@@ -30,6 +32,13 @@ class TweetTableViewCell: UITableViewCell {
             print(tweet.favoritesCount)
             // retweetCountLabel.text = String(tweet.retweetCount)
             // favCountLabel.text = String(tweet.favoritesCount)
+            if (tweet.favorite == true) {
+                favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .normal)
+            }
+            
+            if (tweet.retweet == true) {
+                retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon-green"), for: .normal)
+            }
             
             // for time label
             if let timeStamp = tweet.timeStamp {

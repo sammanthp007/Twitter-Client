@@ -30,9 +30,7 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let twitterClient = TwitterClient.sharedTwitterClient
         
         twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> Void in
-            for tweet in allTweets {
-                print ("\(tweet)")
-            }
+            
             self.tweets = allTweets
             
             // update table
@@ -130,7 +128,7 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // add to the dictionary in the custom class
         detailViewControl.tweet = current_tweet
         
-        print("Segue")
+        print("Segue to details")
         
         
         

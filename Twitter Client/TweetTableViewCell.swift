@@ -21,7 +21,7 @@ class TweetTableViewCell: UITableViewCell {
             print(tweet.text!)
             print(String(describing: tweet.imageUrl))
             tweetText.text = tweet.text
-            thumbnailImageView.setImageWith(tweet.imageUrl as! URL)
+            thumbnailImageView.setImageWith(tweet.imageUrl as URL)
             print(tweet.name)
             displayNameLabel.text = tweet.name
             print(tweet.username)

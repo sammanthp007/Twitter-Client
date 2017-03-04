@@ -21,6 +21,10 @@ class TweetDetailViewController: UIViewController {
     @IBOutlet weak var countRetweetLabel: UILabel!
     @IBOutlet weak var countFavoritesLabel: UILabel!
     @IBOutlet weak var userPictureImage: UIImageView!
+    
+    @IBOutlet weak var favoriteButton: UIButton!
+    
+    @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var retweetedActionLabel: UILabel!
 
     override func viewDidLoad() {
@@ -33,10 +37,24 @@ class TweetDetailViewController: UIViewController {
         tweetTextLabel.text = tweet.text
         // tweetCreatedOnLabel.text = tweet.timeStamp as Date
         // tweetCreatedTimeLabel.text =
-        countRetweetLabel.text = String(tweet.retweetCount)
-        countFavoritesLabel.text = String(tweet.favoritesCount)
-        userPictureImage.setImageWith(tweet.imageUrl as URL)
         
+        if (tweet.favorite == true) {
+            favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .normal)
+        } else {
+            favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon"), for: .normal)
+        }
+        countRetweetLabel.text = String(tweet.retweetCount)
+
+        
+        if (tweet.retweet == true) {
+            retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon-green"), for: .normal)
+        } else {
+            retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon"), for: .normal)
+        }
+        countFavoritesLabel.text = String(tweet.favoritesCount)
+        
+        
+        userPictureImage.setImageWith(tweet.imageUrl as URL)
         userPictureImage.layer.cornerRadius = 3
         userPictureImage.clipsToBounds = true
     }
@@ -51,6 +69,18 @@ class TweetDetailViewController: UIViewController {
     
     
     @IBAction func onRetweet(_ sender: Any) {
+        if (tweet.retweet == true) {
+            // unretweet
+        } else {
+            // retweet
+            TwitterClient.sharedTwitterClient?.retweet(tweet: self.tweet, success: {(ret_tweet) -> () in
+                self.tweet = ret_tweet
+                self.retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon-green"), for: .normal)
+                self.countRetweetLabel.text = String(self.tweet.retweetCount)
+            }, failure: {(error: Error) in
+                print (error.localizedDescription)
+            })
+        }
     }
 
     @IBAction func onFavorite(_ sender: Any) {

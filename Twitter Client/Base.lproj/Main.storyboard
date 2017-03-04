@@ -364,6 +364,8 @@
                     <connections>
                         <outlet property="countFavoritesLabel" destination="aGA-Oi-O3g" id="Xiz-bi-nBi"/>
                         <outlet property="countRetweetLabel" destination="trR-7W-d4g" id="bNH-jw-Ruu"/>
+                        <outlet property="favoriteButton" destination="IMB-Jr-u1A" id="VSB-bf-iXB"/>
+                        <outlet property="retweetButton" destination="4Qs-Vb-ZBX" id="8d0-9b-wrr"/>
                         <outlet property="tweetCreatedOnLabel" destination="irx-ld-xYW" id="QyX-eN-rDq"/>
                         <outlet property="tweetCreatedTimeLabel" destination="EMR-EW-trb" id="JwB-W3-hcc"/>
                         <outlet property="tweetTextLabel" destination="VcU-PS-5SA" id="Q6e-jB-ePh"/>

@@ -72,19 +72,35 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let buttonPosition:CGPoint = (sender as AnyObject).convert(CGPoint.zero, to: self.tableView)
         let indexPath = tableView.indexPathForRow(at: buttonPosition)
         let tweet = tweets?[(indexPath?.row)!]
-        print ("before retweet>>>>>>>>>")
-        TwitterClient.sharedTwitterClient?.retweet(tweet: tweet!, success: { (tweet: TwitterTweet) -> () in
-            print ("retweted>>>>>>>>>")
-            TwitterClient.sharedTwitterClient?.get_tweets(success: { (tweets: [TwitterTweet]) -> () in
-                self.tweets = tweets
-                self.tableView.reloadData()
-            }, noSuccess: { (error: Error) -> () in
+        
+        if (tweet?.retweet == true) {
+            TwitterClient.sharedTwitterClient?.unretweet(tweet: tweet!, success: { (tweet: TwitterTweet) -> () in
+                TwitterClient.sharedTwitterClient?.get_tweets(success: { (tweets: [TwitterTweet]) -> () in
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                }, noSuccess: { (error: Error) -> () in
+                    print(error.localizedDescription)
+                })
+                print("unretweeted")
+            }, failure: { (error: Error) -> () in
                 print(error.localizedDescription)
             })
-            print("retweeted")
-        }, failure: { (error: Error) -> () in
-            print(error.localizedDescription)
-        })
+        }
+        else
+        {
+            TwitterClient.sharedTwitterClient?.retweet(tweet: tweet!, success: { (tweet: TwitterTweet) -> () in
+                TwitterClient.sharedTwitterClient?.get_tweets(success: { (tweets: [TwitterTweet]) -> () in
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                }, noSuccess: { (error: Error) -> () in
+                    print(error.localizedDescription)
+                })
+                print("retweeted")
+            }, failure: { (error: Error) -> () in
+                print(error.localizedDescription)
+            })
+        }
+        
     }
     
     
@@ -93,17 +109,32 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let indexPath = tableView.indexPathForRow(at: buttonPosition)
         let tweet = tweets?[(indexPath?.row)!]
         
-        TwitterClient.sharedTwitterClient?.favorite(tweet: tweet!, success: { (tweet: TwitterTweet) -> () in
-            TwitterClient.sharedTwitterClient?.get_tweets(success: { (tweets: [TwitterTweet]) -> () in
-                self.tweets = tweets
-                self.tableView.reloadData()
-            }, noSuccess: { (error: Error) -> () in
+        if (tweet?.favorite == true) {
+            TwitterClient.sharedTwitterClient?.unfavorite(tweet: tweet!, success: { (tweet: TwitterTweet) -> () in
+                TwitterClient.sharedTwitterClient?.get_tweets(success: { (tweets: [TwitterTweet]) -> () in
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                }, noSuccess: { (error: Error) -> () in
+                    print(error.localizedDescription)
+                })
+                print("made favorite")
+            }, failure: { (error: Error) -> () in
                 print(error.localizedDescription)
             })
-            print("made favorite")
-        }, failure: { (error: Error) -> () in
-            print(error.localizedDescription)
-        })
+        }
+        else {
+            TwitterClient.sharedTwitterClient?.favorite(tweet: tweet!, success: { (tweet: TwitterTweet) -> () in
+                TwitterClient.sharedTwitterClient?.get_tweets(success: { (tweets: [TwitterTweet]) -> () in
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                }, noSuccess: { (error: Error) -> () in
+                    print(error.localizedDescription)
+                })
+                print("made favorite")
+            }, failure: { (error: Error) -> () in
+                print(error.localizedDescription)
+            })
+        }
     }
     
 

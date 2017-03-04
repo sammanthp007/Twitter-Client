@@ -18,6 +18,7 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var timeStampLabel: UILabel!
     
+    
     var tweet : TwitterTweet! {
         didSet {
             tweetText.text = tweet.text

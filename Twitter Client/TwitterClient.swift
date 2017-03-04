@@ -188,7 +188,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     // for unfavoriting
     func unfavorite(tweet: TwitterTweet, success: @escaping (TwitterTweet) -> (), failure: @escaping (Error) -> ()) {
-        post("1.1/favorites/destroy.json", parameters: ["id": tweet.idString!], progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+        post("1.1/favorites/destroy.json", parameters: ["id": tweet.g!], progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
             let dictionary = response as? NSDictionary
             let tweet = TwitterTweet(dictionary: dictionary!)
             success(tweet)

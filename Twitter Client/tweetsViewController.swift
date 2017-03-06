@@ -144,7 +144,7 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     @IBAction func onImageClick(_ sender: Any) {
-        self.performSegue(withIdentifier: "userViewSegue", sender: nil)
+        self.performSegue(withIdentifier: "userViewSegue", sender: sender)
     }
 
     
@@ -174,6 +174,20 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         if segue.identifier == "userViewSegue" {
+            var indexPath: NSIndexPath!
+            
+            if let button = sender as? UIButton {
+                if let superview = button.superview {
+                    if let cell = superview.superview as? TweetTableViewCell {
+                        indexPath = tableView.indexPath(for: cell) as NSIndexPath!
+                    }
+                }
+            }
+            let tweet = self.tweets[indexPath.row]
+            
+            let profileViewControl = segue.destination as! ProfileViewController
+            
+            profileViewControl.user = TwitterUser(dict: tweet.userDictionary)
             
         }
         

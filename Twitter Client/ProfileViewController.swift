@@ -23,9 +23,29 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         // Do any additional setup after loading the view.
+
+        print (user.name!)
+        user.printAll()
+        ProfilePicImageView.setImageWith(user.profileURL!)
+        userHandlerLabel.text = ("@\(user.screenname!)")
+        userNameLabel.text = user.name!
+        
+        let followers = (user.dict?["followers_count"] as? Int) ?? 0
+        followerCountLabel.text = "\(followers)"
+        
+        let following = (user.dict?["friends_count"] as? Int) ?? 0
+        followingCountLabel.text =  "\(following)"
+        
+        let tweets = (user.dict?["statuses_count"] as? Int) ?? 0
+        TweetsCountLabel.text = "\(tweets)"
+        
+        let bg_img_str = user.dict?["profile_background_image_url_https"] as! String
+        let background_image_url = URL(string: bg_img_str)
+        
+        BackgroundImageView.setImageWith(background_image_url!)
+        
     }
 
     override func didReceiveMemoryWarning() {

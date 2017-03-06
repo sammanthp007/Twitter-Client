@@ -22,7 +22,7 @@ class TweetTableViewCell: UITableViewCell {
     
     var tweet : TwitterTweet! {
         didSet {
-            thumbnailButton.setImage(UIImage(), for: .normal)
+            //thumbnailButton.setImage(UIImage(), for: .normal)
             //thumbnailButton.imageView?.setImageWith(tweet.imageUrl as URL)
             thumbnailImageView.setImageWith(tweet.imageUrl as URL)
             displayNameLabel.text = tweet.name

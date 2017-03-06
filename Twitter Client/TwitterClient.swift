@@ -101,7 +101,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     func get_tweets(success: @escaping ([TwitterTweet]) -> (), noSuccess: @escaping (Error) -> ()) {
         get("1.1/statuses/home_timeline.json", parameters: ["count": 20], progress: nil, success: {
             (task, response) -> Void in
-            let tweetDict = response as! [NSDictionary]g
+            let tweetDict = response as! [NSDictionary]
             let allTweets = TwitterTweet.getArrayOfTweets(dictionaries: tweetDict)
             
             success(allTweets)

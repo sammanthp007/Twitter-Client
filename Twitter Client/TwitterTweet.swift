@@ -79,7 +79,7 @@ class TwitterTweet: NSObject {
         print("profileUrl: \(imageUrl)")
         let bio = userDictionary["description"]
         print("bio: \(bio)")
-        print("bio: \(userDictionary)")
+        print("dict: \(userDictionary)")
         }
 
 }

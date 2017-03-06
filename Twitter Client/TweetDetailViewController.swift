@@ -133,8 +133,17 @@ class TweetDetailViewController: UIViewController {
         if segue.identifier == "replySegue" {
             let controller = segue.destination as! ReplyViewController
             
+            // give user info to the next page
+            
+            var userInfo: NSDictionary
+            userInfo = self.tweet.userDictionary
+            
+            controller.user = TwitterUser(dict: userInfo)
+            
             print ("reply Segue")
-            print ("\(self.tweet.printTweetsUser())")
+            //print ("\(self.tweet.printTweetsUser())")
+            //print (">>>>>>>>>>>>>>>>")
+
             
             //let tweet_user = nil
             //controller.user =

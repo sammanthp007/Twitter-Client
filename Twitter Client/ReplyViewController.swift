@@ -12,11 +12,16 @@ class ReplyViewController: UIViewController {
 
     var user: TwitterUser!
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
+        // print all DEBUG
+        user.printAll()
         
     }
 

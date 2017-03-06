@@ -15,11 +15,15 @@ class TwitterUser: NSObject {
     var profileURL: URL?
     var bio: String?
     var dict: NSDictionary?
+    var printDict: NSDictionary?
     
     
     init(dict: NSDictionary) {
         // for putting in persistant memory as NSData
         self.dict = dict
+        
+        // for printing purpose only
+        self.printDict = dict
         
         // deserialization: taking a dictionary of array of information and populating the needed information
         name = dict["name"] as? String
@@ -70,4 +74,8 @@ class TwitterUser: NSObject {
     }
     
     static let userLoggedOutNotification = "UserLoggedOut"
+    
+    func printAll() {
+        print(self.printDict ?? "nothing - samman")
+    }
 }

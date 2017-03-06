@@ -552,8 +552,29 @@
                     <view key="view" contentMode="scaleToFill" id="rdA-kU-O7d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0n-tu-5ai">
+                                <rect key="frame" x="313" y="211" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="send"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2Q-hV-Hld">
+                                <rect key="frame" x="8" y="68" width="8" height="17"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c2Q-hV-Hld" firstAttribute="leading" secondItem="rdA-kU-O7d" secondAttribute="leading" constant="8" id="fF8-Lt-9vj"/>
+                            <constraint firstItem="c2Q-hV-Hld" firstAttribute="top" secondItem="uyZ-Ga-pOE" secondAttribute="bottom" constant="4" id="hgW-jA-IRQ"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c2Q-hV-Hld" secondAttribute="trailing" constant="8" id="x8j-CI-8uO"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tweetTextField" destination="c2Q-hV-Hld" id="jUE-Cg-FZC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCP-Vm-hz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

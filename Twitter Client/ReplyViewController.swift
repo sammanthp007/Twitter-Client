@@ -13,6 +13,11 @@ class ReplyViewController: UIViewController {
     var tweet: TwitterTweet!
     var reply: Bool!
     
+    
+    @IBOutlet weak var tweetTextField: UITextField!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,12 +27,21 @@ class ReplyViewController: UIViewController {
         
         // print all DEBUG
         tweet.printTweetsUser()
+        if reply == true {
+            tweetTextField.text = "@\(tweet!.username) "
+            tweetTextField.becomeFirstResponder()
+        }
+        else {
+            print  ("this is a compose")
+            tweetTextField.becomeFirstResponder()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*

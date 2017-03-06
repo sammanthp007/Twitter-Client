@@ -42,6 +42,25 @@ class ReplyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onSend(_ sender: Any) {
+        TwitterClient.sharedTwitterClient?.reply(id: tweet.idString!, text: tweetTextField.text!, success: {(response: TwitterTweet) in
+            print ("success >>>>>>>>>>>>>>>")
+            print ("\(response)")
+            
+            // perform segue back to 
+        }, faliure: {(error: Error) in
+            print ("Error: \(error)")
+            
+            // also create a alert
+            let errorAlertController = UIAlertController(title: "Error!", message: "\(error)", preferredStyle: .alert)
+            // add ok button
+            let errorAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+                //dismiss
+            }
+            errorAlertController.addAction(errorAction)
+            self.present(errorAlertController, animated: true)
+        })
+    }
     
 
     /*

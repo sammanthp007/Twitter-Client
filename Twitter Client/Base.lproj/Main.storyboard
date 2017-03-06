@@ -557,6 +557,9 @@
                                 <rect key="frame" x="313" y="211" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="send"/>
+                                <connections>
+                                    <action selector="onSend:" destination="gPh-Q4-AZL" eventType="touchUpInside" id="zbE-aN-kVm"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2Q-hV-Hld">
                                 <rect key="frame" x="8" y="68" width="8" height="17"/>

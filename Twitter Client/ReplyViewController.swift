@@ -10,7 +10,7 @@ import UIKit
 
 class ReplyViewController: UIViewController {
 
-    var user: TwitterUser!
+    var tweet: TwitterTweet!
     var reply: Bool!
     
     override func viewDidLoad() {
@@ -18,11 +18,10 @@ class ReplyViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         // set the name of the navigation controller
-        self.title = user.name
+        self.title = tweet.name
         
         // print all DEBUG
-        user.printAll()
-        
+        tweet.printTweetsUser()
     }
 
     override func didReceiveMemoryWarning() {

@@ -214,10 +214,9 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
             
             let curr_tweet = self.tweets[indexPath.row]
             
-            var userInfo: NSDictionary
-            userInfo = curr_tweet.userDictionary
+            controller.tweet = curr_tweet
+            controller.reply = false
             
-            controller.user = TwitterUser(dict: userInfo)
             
             print ("reply Segue")
         }

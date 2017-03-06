@@ -148,6 +148,13 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     
+    @IBAction func onCompose(_ sender: Any) {
+            print ("came here")
+            self.performSegue(withIdentifier: "replySegue", sender: sender)
+        
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -190,6 +197,31 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
             profileViewControl.user = TwitterUser(dict: tweet.userDictionary)
             
         }
+        
+        if segue.identifier == "replySegue" {
+            let controller = segue.destination as! ReplyViewController
+            
+            // give user info to the next page
+            var indexPath: NSIndexPath!
+            
+            if let button = sender as? UIButton {
+                if let superview = button.superview {
+                    if let cell = superview.superview as? TweetTableViewCell {
+                        indexPath = tableView.indexPath(for: cell) as NSIndexPath!
+                    }
+                }
+            }
+            
+            let curr_tweet = self.tweets[indexPath.row]
+            
+            var userInfo: NSDictionary
+            userInfo = curr_tweet.userDictionary
+            
+            controller.user = TwitterUser(dict: userInfo)
+            
+            print ("reply Segue")
+        }
+
         
     }
 

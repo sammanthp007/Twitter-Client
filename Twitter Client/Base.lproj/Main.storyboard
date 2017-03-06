@@ -66,7 +66,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="197" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wzd-2W-luJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="197" id="Y9r-5U-760" customClass="TweetTableViewCell" customModule="Twitter_Client" customModuleProvider="target">
@@ -190,20 +190,15 @@
                             <constraint firstItem="Wzd-2W-luJ" firstAttribute="top" secondItem="kwF-Kq-PIO" secondAttribute="top" id="mml-LS-Nmi"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Home" id="So8-Iq-J78">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="D0D-1H-d6W">
                             <connections>
                                 <action selector="logout:" destination="M6K-FS-iro" id="uga-ch-ZYU"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="GTt-0V-c5r">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="twN-ZP-cNw">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Compose"/>
-                            </button>
-                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="Wzd-2W-luJ" id="vWa-93-A6e"/>
                     </connections>
@@ -315,21 +310,6 @@
                                     <color key="titleShadowColor" red="0.093203529792746154" green="0.093203529792746154" blue="0.093203529792746154" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mdf-dQ-EYM">
-                                <rect key="frame" x="-1" y="361" width="375" height="306"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userViewTweetCell" id="iQq-4b-cAh">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iQq-4b-cAh" id="OIB-9j-gx7">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dq2-VH-Gzx">
                                 <rect key="frame" x="107" y="238" width="1" height="71"/>
                                 <color key="backgroundColor" red="0.51566547927461137" green="0.51566547927461137" blue="0.51566547927461137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -368,7 +348,6 @@
                         <outlet property="TweetsCountLabel" destination="HCV-8x-1Q1" id="CYs-dK-FGQ"/>
                         <outlet property="followerCountLabel" destination="Ohj-TY-Kww" id="KTT-sF-9ed"/>
                         <outlet property="followingCountLabel" destination="DQl-Ut-h0o" id="Xr1-Vu-fsf"/>
-                        <outlet property="tableView" destination="mdf-dQ-EYM" id="II3-UA-BOl"/>
                         <outlet property="userHandlerLabel" destination="cjf-8F-B4U" id="g3T-99-e2b"/>
                         <outlet property="userNameLabel" destination="zP0-VL-hYf" id="YCP-Kk-QoI"/>
                     </connections>
@@ -480,6 +459,7 @@
                                 <state key="normal" title="Button" image="reply-icon"/>
                                 <connections>
                                     <action selector="onReply:" destination="AUT-fb-QCt" eventType="touchUpInside" id="XRt-OU-JLI"/>
+                                    <segue destination="gPh-Q4-AZL" kind="show" identifier="replySegue" id="92I-b8-7g0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMB-Jr-u1A">
@@ -560,6 +540,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Cf-RE-TJi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3884" y="123.68815592203899"/>
+        </scene>
+        <!--Reply View Controller-->
+        <scene sceneID="5kD-pw-k4D">
+            <objects>
+                <viewController id="gPh-Q4-AZL" customClass="ReplyViewController" customModule="Twitter_Client" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uyZ-Ga-pOE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qdm-go-8cA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rdA-kU-O7d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wCP-Vm-hz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3919" y="-686"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ihp-zg-bLD">

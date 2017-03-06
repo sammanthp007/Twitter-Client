@@ -11,9 +11,7 @@ import UIKit
 class ReplyViewController: UIViewController {
 
     var user: TwitterUser!
-    
-    
-    
+    var reply: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()

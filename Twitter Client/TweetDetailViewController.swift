@@ -120,7 +120,6 @@ class TweetDetailViewController: UIViewController {
     
     @IBAction func onReply(_ sender: Any) {
         self.performSegue(withIdentifier: "replySegue", sender: nil)
-        
     }
     
     
@@ -140,13 +139,10 @@ class TweetDetailViewController: UIViewController {
             
             controller.user = TwitterUser(dict: userInfo)
             
-            print ("reply Segue")
-            //print ("\(self.tweet.printTweetsUser())")
-            //print (">>>>>>>>>>>>>>>>")
-
+            // set that this is in reply to a status
+            controller.reply = true
             
-            //let tweet_user = nil
-            //controller.user =
+            print ("to reply Segue")
         }
     }
 

@@ -26,8 +26,6 @@ class ProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
 
-        print (user.name!)
-        user.printAll()
         ProfilePicImageView.setImageWith(user.profileURL!)
         userHandlerLabel.text = ("@\(user.screenname!)")
         userNameLabel.text = user.name!

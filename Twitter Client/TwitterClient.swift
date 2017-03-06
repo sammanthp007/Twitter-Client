@@ -188,7 +188,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     // for unfavoriting
     func unfavorite(tweet: TwitterTweet, success: @escaping (TwitterTweet) -> (), failure: @escaping (Error) -> ()) {
-        post("1.1/favorites/destroy.json", parameters: ["id": tweet.g!], progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+        post("1.1/favorites/destroy.json", parameters: ["id": tweet.idString], progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
             let dictionary = response as? NSDictionary
             let tweet = TwitterTweet(dictionary: dictionary!)
             success(tweet)
@@ -197,9 +197,19 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    // for updating status
+    func reply(id: String, text: String, success: @escaping (TwitterTweet) -> (), faliure: @escaping (Error) -> ()) {
+        post("1.1/statuses/update.json", parameters: ["in_reply_to_status_id": id, "status": text], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            let response = response as! NSDictionary
+            let tweet = TwitterTweet.init(dictionary: response)
+            success(tweet)
+        }) { (task: URLSessionDataTask?, error: Error) in
+            faliure(error)
+        }
+    }
     
     
-    // for figuring when the tweet was made portion
+    // for figuring when the tweet was created
     static func timeSince(timeStamp: Date) -> String {
         let since = timeStamp.timeIntervalSinceNow
         

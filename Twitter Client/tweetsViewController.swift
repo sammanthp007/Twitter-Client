@@ -74,6 +74,7 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let tweet = tweets?[(indexPath?.row)!]
         
         if (tweet?.retweet == true) {
+            print ("unretweeting")
             TwitterClient.sharedTwitterClient?.unretweet(tweet: tweet!, success: { (tweet: TwitterTweet) -> () in
                 TwitterClient.sharedTwitterClient?.get_tweets(success: { (tweets: [TwitterTweet]) -> () in
                     self.tweets = tweets
@@ -88,6 +89,7 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         }
         else
         {
+            print ("retweeting")
             TwitterClient.sharedTwitterClient?.retweet(tweet: tweet!, success: { (tweet: TwitterTweet) -> () in
                 TwitterClient.sharedTwitterClient?.get_tweets(success: { (tweets: [TwitterTweet]) -> () in
                     self.tweets = tweets
@@ -110,6 +112,7 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let tweet = tweets?[(indexPath?.row)!]
         
         if (tweet?.favorite == true) {
+            print ("should unfavorite")
             TwitterClient.sharedTwitterClient?.unfavorite(tweet: tweet!, success: { (tweet: TwitterTweet) -> () in
                 TwitterClient.sharedTwitterClient?.get_tweets(success: { (tweets: [TwitterTweet]) -> () in
                     self.tweets = tweets
@@ -123,6 +126,7 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
             })
         }
         else {
+            print ("favoriting")
             TwitterClient.sharedTwitterClient?.favorite(tweet: tweet!, success: { (tweet: TwitterTweet) -> () in
                 TwitterClient.sharedTwitterClient?.get_tweets(success: { (tweets: [TwitterTweet]) -> () in
                     self.tweets = tweets

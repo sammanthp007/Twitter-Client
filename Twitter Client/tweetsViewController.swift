@@ -144,12 +144,8 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     @IBAction func onImageClick(_ sender: Any) {
-        print("Pressed here")
+        self.performSegue(withIdentifier: "userViewSegue", sender: nil)
     }
-    
-    
-   
-    
 
     
     // MARK: - Navigation
@@ -159,21 +155,28 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let cell = sender as! UITableViewCell
-
-        // get the indexpath for the given cell
-        let indexPath = tableView.indexPath(for: cell)
-        
-        // get the movie
-        let current_tweet = self.tweets![(indexPath!.row)]
-        
-        // get the detail view controller we segue to
-        let detailViewControl = segue.destination as! TweetDetailViewController
+        if segue.identifier == "toDetailViewSegue" {
+            let cell = sender as! UITableViewCell
             
-        // add to the dictionary in the custom class
-        detailViewControl.tweet = current_tweet
+            // get the indexpath for the given cell
+            let indexPath = tableView.indexPath(for: cell)
+            
+            // get the movie
+            let current_tweet = self.tweets![(indexPath!.row)]
+            
+            // get the detail view controller we segue to
+            let detailViewControl = segue.destination as! TweetDetailViewController
+            
+            // add to the dictionary in the custom class
+            detailViewControl.tweet = current_tweet
+            
+            print("Segue to details")
+        }
         
-        print("Segue to details")
+        if segue.identifier == "userViewSegue" {
+            
+        }
+        
     }
 
 }

@@ -31,6 +31,7 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> Void in
             
+            // set array of Tweets
             self.tweets = allTweets
             
             // update table

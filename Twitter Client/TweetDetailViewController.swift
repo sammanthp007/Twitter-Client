@@ -134,7 +134,7 @@ class TweetDetailViewController: UIViewController {
             let controller = segue.destination as! ReplyViewController
             
             print ("reply Segue")
-            print (self.tweet)
+            print ("\(self.tweet.printTweetsUser())")
             
             //let tweet_user = nil
             //controller.user =

@@ -29,8 +29,9 @@ class TwitterTweet: NSObject {
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favoritesCount  = (dictionary["favorite_count"] as? Int) ?? 0
         idString = dictionary["id_str"] as? String
+        
+        // the user associated with the user
         let ss = dictionary["user"]
-        //print (">>>>>>this is ss>>>>>>>>>\(ss) but dictionary is still \(dictionary)")
         userDictionary = ss as! NSDictionary
         name = userDictionary["name"] as! String
         username = (userDictionary["screen_name"] as? String)!
@@ -68,7 +69,17 @@ class TwitterTweet: NSObject {
             let tweet = TwitterTweet(dictionary: dictionary)
             tweets.append(tweet)
         }
+        
         return tweets
     }
+    
+    func printTweetsUser() {
+        print("name: \(name)")
+        print("screenname: \(username)")
+        print("profileUrl: \(imageUrl)")
+        let bio = userDictionary["description"]
+        print("bio: \(bio)")
+        print("bio: \(userDictionary)")
+        }
 
 }

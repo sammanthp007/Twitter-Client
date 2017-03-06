@@ -142,6 +142,12 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    
+    @IBAction func onImageClick(_ sender: Any) {
+        print("Pressed here")
+    }
+    
+    
    
     
 
@@ -168,9 +174,6 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         detailViewControl.tweet = current_tweet
         
         print("Segue to details")
-        
-        
-        
     }
 
 }

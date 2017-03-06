@@ -10,6 +10,7 @@ import UIKit
 
 class TweetTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var thumbnailButton: UIButton!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var displayNameLabel: UILabel!
@@ -21,7 +22,8 @@ class TweetTableViewCell: UITableViewCell {
     
     var tweet : TwitterTweet! {
         didSet {
-            tweetText.text = tweet.text
+            thumbnailButton.setImage(UIImage(), for: .normal)
+            //thumbnailButton.imageView?.setImageWith(tweet.imageUrl as URL)
             thumbnailImageView.setImageWith(tweet.imageUrl as URL)
             displayNameLabel.text = tweet.name
             usernameLabel.text = "@\(tweet.username)"
@@ -46,6 +48,7 @@ class TweetTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
         thumbnailImageView.layer.cornerRadius = 3
         thumbnailImageView.clipsToBounds = true
     }

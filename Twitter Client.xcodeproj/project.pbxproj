@@ -20,6 +20,7 @@
 		5E9180381E638C0B009B4267 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E9180371E638C0B009B4267 /* Assets.xcassets */; };
 		5E91803B1E638C0B009B4267 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E9180391E638C0B009B4267 /* LaunchScreen.storyboard */; };
 		5ECF05901E6DBA25008A6DCF /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECF058F1E6DBA25008A6DCF /* ReplyViewController.swift */; };
+		5ECF05921E6E00E6008A6DCF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECF05911E6E00E6008A6DCF /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		5E91803A1E638C0B009B4267 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E91803C1E638C0B009B4267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ECF058F1E6DBA25008A6DCF /* ReplyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
+		5ECF05911E6E00E6008A6DCF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EBDC0FDE99B07E38EE9691B9 /* Pods-Twitter Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter Client.release.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter Client/Pods-Twitter Client.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 				5E868E521E66AA3500BC2F78 /* tweetsViewController.swift */,
 				5E500F931E6B1B92003E2010 /* TweetDetailViewController.swift */,
 				5ECF058F1E6DBA25008A6DCF /* ReplyViewController.swift */,
+				5ECF05911E6E00E6008A6DCF /* ProfileViewController.swift */,
 			);
 			name = "view controllers";
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			files = (
 				5E868E511E668EE400BC2F78 /* TwitterClient.swift in Sources */,
 				5ECF05901E6DBA25008A6DCF /* ReplyViewController.swift in Sources */,
+				5ECF05921E6E00E6008A6DCF /* ProfileViewController.swift in Sources */,
 				5E868E4A1E6643CB00BC2F78 /* LoginViewController.swift in Sources */,
 				5E868E4E1E6682BD00BC2F78 /* TwitterTweet.swift in Sources */,
 				5E9180311E638C0B009B4267 /* AppDelegate.swift in Sources */,

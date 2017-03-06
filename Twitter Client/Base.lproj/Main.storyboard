@@ -132,14 +132,28 @@
                                                         <action selector="favoriteButton:" destination="M6K-FS-iro" eventType="touchUpInside" id="BPv-ey-nth"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nN2-GV-eOp">
+                                                    <rect key="frame" x="16" y="24" width="88" height="88"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="88" id="9Sh-mm-2u4"/>
+                                                        <constraint firstAttribute="width" constant="88" id="M9u-jM-dFa"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="onImageClick:" destination="M6K-FS-iro" eventType="touchUpInside" id="Qbp-sv-OyI"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Sas-Mp-CRr" firstAttribute="top" secondItem="0wV-5d-2Lj" secondAttribute="top" constant="8" id="34a-C2-RvR"/>
+                                                <constraint firstItem="nN2-GV-eOp" firstAttribute="top" secondItem="0wV-5d-2Lj" secondAttribute="topMargin" constant="16" id="4oK-zQ-1ZS"/>
+                                                <constraint firstItem="Sas-Mp-CRr" firstAttribute="leading" secondItem="nN2-GV-eOp" secondAttribute="trailing" constant="8" id="EJs-2n-HTx"/>
                                                 <constraint firstItem="gBQ-2I-mgz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cLQ-IT-mvN" secondAttribute="trailing" constant="16" id="G27-vN-ZMh"/>
                                                 <constraint firstItem="cLQ-IT-mvN" firstAttribute="baseline" secondItem="Sas-Mp-CRr" secondAttribute="baseline" id="IaV-ID-Mh7"/>
                                                 <constraint firstAttribute="trailing" secondItem="2Xi-il-KmT" secondAttribute="trailing" constant="16" id="Lnd-Cm-RCV"/>
                                                 <constraint firstItem="cLQ-IT-mvN" firstAttribute="leading" secondItem="Sas-Mp-CRr" secondAttribute="trailing" constant="8" id="Ma3-O4-1HY"/>
+                                                <constraint firstItem="2Xi-il-KmT" firstAttribute="leading" secondItem="nN2-GV-eOp" secondAttribute="trailing" constant="8" id="PxB-ri-ltL"/>
                                                 <constraint firstItem="gBQ-2I-mgz" firstAttribute="baseline" secondItem="cLQ-IT-mvN" secondAttribute="baseline" id="SFk-fG-avl"/>
+                                                <constraint firstItem="nN2-GV-eOp" firstAttribute="leading" secondItem="0wV-5d-2Lj" secondAttribute="leadingMargin" constant="8" id="SYc-TP-orS"/>
                                                 <constraint firstAttribute="bottom" secondItem="jOc-tb-tsa" secondAttribute="bottom" constant="16" id="WQX-V9-XKK"/>
                                                 <constraint firstItem="jOc-tb-tsa" firstAttribute="leading" secondItem="8z6-hq-zsu" secondAttribute="trailing" constant="32" id="YHv-hg-bH6"/>
                                                 <constraint firstItem="6tl-2K-rbK" firstAttribute="leading" secondItem="0wV-5d-2Lj" secondAttribute="leadingMargin" constant="8" id="ZLt-GY-d9D"/>
@@ -156,11 +170,12 @@
                                             <outlet property="displayNameLabel" destination="Sas-Mp-CRr" id="ktM-ch-qfg"/>
                                             <outlet property="favoriteButton" destination="jOc-tb-tsa" id="7j9-dZ-bQW"/>
                                             <outlet property="retweetButton" destination="8z6-hq-zsu" id="Wor-MG-7n7"/>
+                                            <outlet property="thumbnailButton" destination="nN2-GV-eOp" id="pXa-O6-5D3"/>
                                             <outlet property="thumbnailImageView" destination="6tl-2K-rbK" id="k4c-Ox-ocv"/>
                                             <outlet property="timeStampLabel" destination="gBQ-2I-mgz" id="YRL-kj-AEq"/>
                                             <outlet property="tweetText" destination="2Xi-il-KmT" id="eIT-ku-W88"/>
                                             <outlet property="usernameLabel" destination="cLQ-IT-mvN" id="1gD-rZ-HFV"/>
-                                            <segue destination="AUT-fb-QCt" kind="show" id="GDB-F2-gWe"/>
+                                            <segue destination="AUT-fb-QCt" kind="show" identifier="toDetailViewSegue" id="GDB-F2-gWe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -190,17 +205,16 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Wzd-2W-luJ" id="vWa-93-A6e"/>
-                        <segue destination="vCz-LA-l5Y" kind="show" identifier="onReplySegue" id="q1q-Zf-uqA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5UP-dE-vk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3108" y="123.68815592203899"/>
         </scene>
-        <!--Reply View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="gSi-CI-vTU">
             <objects>
-                <viewController id="vCz-LA-l5Y" customClass="ReplyViewController" customModule="Twitter_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vCz-LA-l5Y" customClass="ProfileViewController" customModule="Twitter_Client" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3OO-8f-aqY"/>
                         <viewControllerLayoutGuide type="bottom" id="WPB-CM-q3Z"/>
@@ -347,6 +361,15 @@
                             <constraint firstItem="dq2-VH-Gzx" firstAttribute="top" secondItem="RJP-rr-TP9" secondAttribute="top" constant="238" id="zDc-w7-GpK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="BackgroundImageView" destination="sEY-91-Dk1" id="Mo9-Ol-hd9"/>
+                        <outlet property="ProfilePicImageView" destination="nPa-ha-ziL" id="QSX-py-1Uz"/>
+                        <outlet property="TweetsCountLabel" destination="HCV-8x-1Q1" id="CYs-dK-FGQ"/>
+                        <outlet property="followerCountLabel" destination="Ohj-TY-Kww" id="KTT-sF-9ed"/>
+                        <outlet property="followingCountLabel" destination="DQl-Ut-h0o" id="Xr1-Vu-fsf"/>
+                        <outlet property="userHandlerLabel" destination="cjf-8F-B4U" id="g3T-99-e2b"/>
+                        <outlet property="userNameLabel" destination="zP0-VL-hYf" id="YCP-Kk-QoI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Xy-tL-oo8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -530,7 +553,6 @@
                         <outlet property="userHandleLabel" destination="S1i-jI-kd4" id="Pt0-T5-zUB"/>
                         <outlet property="userNameLabel" destination="4Ss-Zc-EL2" id="C8q-jZ-nyo"/>
                         <outlet property="userPictureImage" destination="Yej-QJ-DmE" id="R1d-Eh-hgd"/>
-                        <segue destination="vCz-LA-l5Y" kind="show" identifier="replySegue" id="RuA-bD-hQ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Cf-RE-TJi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -579,7 +601,4 @@
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="q1q-Zf-uqA"/>
-    </inferredMetricsTieBreakers>
 </document>

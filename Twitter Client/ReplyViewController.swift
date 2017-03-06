@@ -19,6 +19,8 @@ class ReplyViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        // set the name of the navigation controller
+        self.title = user.name
         
         // print all DEBUG
         user.printAll()

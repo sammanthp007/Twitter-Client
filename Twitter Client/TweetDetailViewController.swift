@@ -64,10 +64,6 @@ class TweetDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onReply(_ sender: Any) {
-    }
-    
-    
     @IBAction func onRetweet(_ sender: Any) {
         if (tweet.retweet == true) {
             // unretweet
@@ -118,6 +114,15 @@ class TweetDetailViewController: UIViewController {
             })
         }
     }
+    
+    
+    // on reply
+    
+    @IBAction func onReply(_ sender: Any) {
+        self.performSegue(withIdentifier: "replySegue", sender: nil)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

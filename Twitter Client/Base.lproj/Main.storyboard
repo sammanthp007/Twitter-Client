@@ -201,6 +201,7 @@
                     <connections>
                         <outlet property="tableView" destination="Wzd-2W-luJ" id="vWa-93-A6e"/>
                         <segue destination="vCz-LA-l5Y" kind="show" identifier="userViewSegue" id="p9o-PA-Msf"/>
+                        <segue destination="gPh-Q4-AZL" kind="show" identifier="replySegue" id="YR2-BF-wg1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5UP-dE-vk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -553,14 +554,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0n-tu-5ai">
-                                <rect key="frame" x="313" y="211" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="send"/>
-                                <connections>
-                                    <action selector="onSend:" destination="gPh-Q4-AZL" eventType="touchUpInside" id="zbE-aN-kVm"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2Q-hV-Hld">
                                 <rect key="frame" x="8" y="68" width="8" height="17"/>
                                 <nil key="textColor"/>
@@ -625,4 +618,7 @@
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YR2-BF-wg1"/>
+    </inferredMetricsTieBreakers>
 </document>

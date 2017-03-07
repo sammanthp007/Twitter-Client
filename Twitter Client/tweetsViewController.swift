@@ -26,6 +26,17 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         
+        // programmitically add the compose button
+        // programmitically add the uibarbutton on the right
+        // let rightButton = UIBarButtonItem(title: "Compose", style: UIBarButtonItemStyle.done, target: self, action: #selector(onSend(_:)))
+        
+        //self.navigationItem.rightBarButtonItem = rightButton
+        
+        let rightButton = UIBarButtonItem(title: "Compose", style: UIBarButtonItemStyle.done, target: self, action: #selector(onCompose(_:)))
+        
+        self.navigationItem.rightBarButtonItem = rightButton
+        
+        
         // fetch tweets
         let twitterClient = TwitterClient.sharedTwitterClient
         
@@ -201,20 +212,6 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         if segue.identifier == "replySegue" {
             let controller = segue.destination as! ReplyViewController
             
-            // give user info to the next page
-            var indexPath: NSIndexPath!
-            
-            if let button = sender as? UIButton {
-                if let superview = button.superview {
-                    if let cell = superview.superview as? TweetTableViewCell {
-                        indexPath = tableView.indexPath(for: cell) as NSIndexPath!
-                    }
-                }
-            }
-            
-            let curr_tweet = self.tweets[indexPath.row]
-            
-            controller.tweet = curr_tweet
             controller.reply = false
             
             

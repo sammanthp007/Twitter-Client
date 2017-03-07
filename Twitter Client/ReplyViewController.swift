@@ -20,21 +20,25 @@ class ReplyViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        // set the name of the navigation controller
-        self.title = tweet.name
+        
         
         print ("this is the reply setup code")
-        let rightButton = UIBarButtonItem(title: "Right Button", style: UIBarButtonItemStyle.plain, target: self, action: #selector(onSend(_:)))
+        // programmitically add the uibarbutton on the right
+        let rightButton = UIBarButtonItem(title: "Send", style: UIBarButtonItemStyle.done, target: self, action: #selector(onSend(_:)))
         
         self.navigationItem.rightBarButtonItem = rightButton
 
         // print all DEBUG
         // tweet.printTweetsUser()
         if reply == true {
+            // set the name of the navigation controller
+            self.title = self.tweet.name
             tweetTextField.text = "@\(tweet!.username) "
             tweetTextField.becomeFirstResponder()
         }
         else {
+            // set the name of the navigation controller
+            self.title = "Compose"
             print  ("this is a compose")
             tweetTextField.becomeFirstResponder()
         }
@@ -47,8 +51,15 @@ class ReplyViewController: UIViewController {
     
 
     @IBAction func onSend(_ sender: Any) {
-        TwitterClient.sharedTwitterClient?.reply(id: tweet.idString!, text: tweetTextField.text!, reply: reply, success: {(response: TwitterTweet) in
-            print ("success >>>>>>>>>>>>>>>")
+        let reply_id: String
+        if self.reply == true {
+            reply_id = tweet.idString!
+        }
+        else {
+            reply_id = ""
+        }
+        TwitterClient.sharedTwitterClient?.reply(id: reply_id, text: tweetTextField.text!, reply: reply, success: {(response: TwitterTweet) in
+            print ("Tweeted")
             print ("\(response)")
             
             // goes back one segue

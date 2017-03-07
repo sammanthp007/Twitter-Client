@@ -35,12 +35,13 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let rightButton = UIBarButtonItem(title: "Compose", style: UIBarButtonItemStyle.done, target: self, action: #selector(onCompose(_:)))
         
         self.navigationItem.rightBarButtonItem = rightButton
-        
-        
-        // fetch tweets
-        let twitterClient = TwitterClient.sharedTwitterClient
-        
-        twitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> Void in
+
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        TwitterClient.sharedTwitterClient?.get_tweets(success: {(allTweets: [TwitterTweet]) -> Void in
             
             // set array of Tweets
             self.tweets = allTweets
@@ -51,8 +52,10 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         }, noSuccess: {(error: Error) -> Void in
             print ("\(error)")
         })
-
+        
+        print ("view appeared")
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.tweets != nil {

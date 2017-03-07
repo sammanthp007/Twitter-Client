@@ -459,7 +459,7 @@
                                 <state key="normal" title="Button" image="reply-icon"/>
                                 <connections>
                                     <action selector="onReply:" destination="AUT-fb-QCt" eventType="touchUpInside" id="XRt-OU-JLI"/>
-                                    <segue destination="gPh-Q4-AZL" kind="show" identifier="replySegue" id="92I-b8-7g0"/>
+                                    <segue destination="B4r-b4-c6e" kind="show" identifier="replySegue" id="92I-b8-7g0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMB-Jr-u1A">
@@ -553,14 +553,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0n-tu-5ai">
-                                <rect key="frame" x="313" y="211" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="send"/>
-                                <connections>
-                                    <action selector="onSend:" destination="gPh-Q4-AZL" eventType="touchUpInside" id="zbE-aN-kVm"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2Q-hV-Hld">
                                 <rect key="frame" x="8" y="68" width="8" height="17"/>
                                 <nil key="textColor"/>
@@ -575,13 +567,20 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c2Q-hV-Hld" secondAttribute="trailing" constant="8" id="x8j-CI-8uO"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="zXN-C1-4BR">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="compose" id="6tG-c8-o8e">
+                            <connections>
+                                <action selector="onSend:" destination="gPh-Q4-AZL" id="k5Y-0t-HnZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tweetTextField" destination="c2Q-hV-Hld" id="jUE-Cg-FZC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCP-Vm-hz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3919" y="-686"/>
+            <point key="canvasLocation" x="4856.8000000000002" y="-686.80659670164926"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ihp-zg-bLD">
@@ -618,6 +617,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="df0-P3-bCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2201" y="124"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cKU-Oh-Xc0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B4r-b4-c6e" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qDU-Uo-F0h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gPh-Q4-AZL" kind="relationship" relationship="rootViewController" id="WWr-ly-9ta"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iin-no-Efu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3917.5999999999999" y="-686.80659670164926"/>
         </scene>
     </scenes>
     <resources>

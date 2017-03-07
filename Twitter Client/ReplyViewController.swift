@@ -23,8 +23,9 @@ class ReplyViewController: UIViewController {
         // set the name of the navigation controller
         self.title = tweet.name
         
+        print ("this is the reply setup code")
         // print all DEBUG
-        tweet.printTweetsUser()
+        // tweet.printTweetsUser()
         if reply == true {
             tweetTextField.text = "@\(tweet!.username) "
             tweetTextField.becomeFirstResponder()
@@ -40,13 +41,14 @@ class ReplyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
     @IBAction func onSend(_ sender: Any) {
         TwitterClient.sharedTwitterClient?.reply(id: tweet.idString!, text: tweetTextField.text!, reply: reply, success: {(response: TwitterTweet) in
             print ("success >>>>>>>>>>>>>>>")
             print ("\(response)")
             
             // goes back one segue
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
             
             // perform segue back to
         }, faliure: {(error: Error) in

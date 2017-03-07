@@ -554,7 +554,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2Q-hV-Hld">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2Q-hV-Hld">
                                 <rect key="frame" x="8" y="68" width="8" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -565,7 +565,7 @@
                         <constraints>
                             <constraint firstItem="c2Q-hV-Hld" firstAttribute="leading" secondItem="rdA-kU-O7d" secondAttribute="leading" constant="8" id="fF8-Lt-9vj"/>
                             <constraint firstItem="c2Q-hV-Hld" firstAttribute="top" secondItem="uyZ-Ga-pOE" secondAttribute="bottom" constant="4" id="hgW-jA-IRQ"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c2Q-hV-Hld" secondAttribute="trailing" constant="8" id="x8j-CI-8uO"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c2Q-hV-Hld" secondAttribute="trailing" priority="749" constant="8" id="x8j-CI-8uO"/>
                         </constraints>
                     </view>
                     <connections>
@@ -574,7 +574,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCP-Vm-hz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3919" y="-686"/>
+            <point key="canvasLocation" x="3917.5999999999999" y="-686.80659670164926"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ihp-zg-bLD">

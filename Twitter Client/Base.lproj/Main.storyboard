@@ -455,6 +455,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBK-tc-iAA">
                                 <rect key="frame" x="32" y="267" width="30" height="30"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0p9-Hh-Oi9"/>
                                     <constraint firstAttribute="width" constant="30" id="u0c-8I-VJd"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="reply-icon"/>
@@ -465,6 +466,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMB-Jr-u1A">
                                 <rect key="frame" x="220" y="267" width="30" height="30"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cyb-uR-5iv"/>
                                     <constraint firstAttribute="width" constant="30" id="dO2-sr-bPg"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="favor-icon"/>
@@ -475,6 +477,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Qs-Vb-ZBX">
                                 <rect key="frame" x="126" y="267" width="30" height="30"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HeY-da-iKE"/>
                                     <constraint firstAttribute="width" constant="30" id="vMK-Y5-ZGc"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="retweet-icon"/>
@@ -622,6 +625,6 @@
         <image name="retweet-icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YR2-BF-wg1"/>
+        <segue reference="1ur-VE-nFQ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -27,8 +27,7 @@ class TweetTableViewCell: UITableViewCell {
             thumbnailImageView.setImageWith(tweet.imageUrl as URL)
             displayNameLabel.text = tweet.name
             usernameLabel.text = "@\(tweet.username)"
-            // retweetCountLabel.text = String(tweet.retweetCount)
-            // favCountLabel.text = String(tweet.favoritesCount)
+
             if (tweet.favorite == true) {
                 favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .normal)
             }

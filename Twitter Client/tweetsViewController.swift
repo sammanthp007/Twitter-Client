@@ -54,6 +54,7 @@ class tweetsViewController: UIViewController, UITableViewDataSource, UITableView
         })
         
         print ("view appeared")
+        
     }
     
     

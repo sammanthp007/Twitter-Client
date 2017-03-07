@@ -26,6 +26,7 @@ class TweetTableViewCell: UITableViewCell {
             //thumbnailButton.imageView?.setImageWith(tweet.imageUrl as URL)
             thumbnailImageView.setImageWith(tweet.imageUrl as URL)
             displayNameLabel.text = tweet.name
+            tweetText.text = tweet.text
             usernameLabel.text = "@\(tweet.username)"
 
             if (tweet.favorite == true) {

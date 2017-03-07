@@ -24,6 +24,10 @@ class ReplyViewController: UIViewController {
         self.title = tweet.name
         
         print ("this is the reply setup code")
+        let rightButton = UIBarButtonItem(title: "Right Button", style: UIBarButtonItemStyle.plain, target: self, action: #selector(onSend(_:)))
+        
+        self.navigationItem.rightBarButtonItem = rightButton
+
         // print all DEBUG
         // tweet.printTweetsUser()
         if reply == true {
@@ -48,7 +52,7 @@ class ReplyViewController: UIViewController {
             print ("\(response)")
             
             // goes back one segue
-            _ = self.navigationController!.navigationController?.navigationController?.popViewController(animated: true)
+            _ = self.navigationController!.popViewController(animated: true)
             
             
         }, faliure: {(error: Error) in

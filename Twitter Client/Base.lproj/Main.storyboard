@@ -140,7 +140,6 @@
                                                     </constraints>
                                                     <connections>
                                                         <action selector="onImageClick:" destination="M6K-FS-iro" eventType="touchUpInside" id="Qbp-sv-OyI"/>
-                                                        <segue destination="vCz-LA-l5Y" kind="show" identifier="userViewSegue" id="r0o-de-WRs"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -201,6 +200,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="Wzd-2W-luJ" id="vWa-93-A6e"/>
+                        <segue destination="vCz-LA-l5Y" kind="show" identifier="userViewSegue" id="p9o-PA-Msf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5UP-dE-vk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -459,7 +459,6 @@
                                 <state key="normal" title="Button" image="reply-icon"/>
                                 <connections>
                                     <action selector="onReply:" destination="AUT-fb-QCt" eventType="touchUpInside" id="XRt-OU-JLI"/>
-                                    <segue destination="gPh-Q4-AZL" kind="show" identifier="replySegue" id="92I-b8-7g0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMB-Jr-u1A">
@@ -535,6 +534,7 @@
                         <outlet property="userHandleLabel" destination="S1i-jI-kd4" id="Pt0-T5-zUB"/>
                         <outlet property="userNameLabel" destination="4Ss-Zc-EL2" id="C8q-jZ-nyo"/>
                         <outlet property="userPictureImage" destination="Yej-QJ-DmE" id="R1d-Eh-hgd"/>
+                        <segue destination="gPh-Q4-AZL" kind="show" identifier="replySegue" id="1ur-VE-nFQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Cf-RE-TJi" userLabel="First Responder" sceneMemberID="firstResponder"/>

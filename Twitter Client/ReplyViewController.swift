@@ -14,7 +14,7 @@ class ReplyViewController: UIViewController {
     var reply: Bool!
     
     
-    @IBOutlet weak var tweetTextField: UITextField!
+    @IBOutlet weak var tweetTextField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

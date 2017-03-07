@@ -48,9 +48,9 @@ class ReplyViewController: UIViewController {
             print ("\(response)")
             
             // goes back one segue
-            _ = self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController!.navigationController?.navigationController?.popViewController(animated: true)
             
-            // perform segue back to
+            
         }, faliure: {(error: Error) in
             print ("Error: \(error)")
             

@@ -131,8 +131,7 @@ class TweetDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "replySegue" {
             print ("in replySegue")
-            let controller_nav = segue.destination as! UINavigationController
-            let controller = controller_nav.topViewController as! ReplyViewController
+            let controller = segue.destination as! ReplyViewController
             
             // give tweet info to the next page
             

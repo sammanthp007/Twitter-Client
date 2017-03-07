@@ -16,8 +16,6 @@ class ReplyViewController: UIViewController {
     
     @IBOutlet weak var tweetTextField: UITextField!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,11 +41,14 @@ class ReplyViewController: UIViewController {
     }
     
     @IBAction func onSend(_ sender: Any) {
-        TwitterClient.sharedTwitterClient?.reply(id: tweet.idString!, text: tweetTextField.text!, success: {(response: TwitterTweet) in
+        TwitterClient.sharedTwitterClient?.reply(id: tweet.idString!, text: tweetTextField.text!, reply: reply, success: {(response: TwitterTweet) in
             print ("success >>>>>>>>>>>>>>>")
             print ("\(response)")
             
-            // perform segue back to 
+            // goes back one segue
+            self.navigationController?.popViewController(animated: true)
+            
+            // perform segue back to
         }, faliure: {(error: Error) in
             print ("Error: \(error)")
             
